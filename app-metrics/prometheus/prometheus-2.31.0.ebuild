@@ -7,7 +7,7 @@ MY_PV=v${PV}
 
 DESCRIPTION="Prometheus monitoring system and time series database"
 HOMEPAGE="https://github.com/prometheus/prometheus"
-SRC_URI="https://github.com/prometheus/prometheus/archive/v2.30.3.tar.gz -> prometheus-2.30.3.tar.gz"
+SRC_URI="https://github.com/prometheus/prometheus/archive/v2.31.0.tar.gz -> prometheus-2.31.0.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
