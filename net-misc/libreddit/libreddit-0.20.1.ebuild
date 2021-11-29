@@ -97,7 +97,7 @@ rustc_version-0.2.3
 rustls-0.20.2
 rustls-native-certs-0.6.1
 rustls-pemfile-0.2.1
-ryu-1.0.5
+ryu-1.0.6
 schannel-0.1.19
 scopeguard-1.1.0
 sct-0.7.0
@@ -163,7 +163,7 @@ inherit cargo
 
 DESCRIPTION="An alternative private front-end to Reddit"
 HOMEPAGE="https://github.com/spikecodes/libreddit"
-SRC_URI="https://api.github.com/repos/spikecodes/libreddit/tarball/v0.20.0 -> libreddit-v0.20.0.tar.gz
+SRC_URI="https://api.github.com/repos/spikecodes/libreddit/tarball/v0.20.1 -> libreddit-v0.20.1.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
 LICENSE="GPL3"
