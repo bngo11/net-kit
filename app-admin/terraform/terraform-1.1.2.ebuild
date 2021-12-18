@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="A tool for building, changing, and combining infrastructure safely"
 HOMEPAGE="https://www.terraform.io/"
-SRC_URI="https://github.com/hashicorp/terraform/archive/v1.1.1.tar.gz -> terraform-1.1.1.tar.gz"
+SRC_URI="https://github.com/hashicorp/terraform/archive/v1.1.2.tar.gz -> terraform-1.1.2.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
