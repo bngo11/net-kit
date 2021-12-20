@@ -8,7 +8,7 @@ MY_P="${PN^}-v${PV}"
 
 DESCRIPTION="A GTK+ RDP, SPICE, VNC, XDMCP and SSH client"
 HOMEPAGE="https://remmina.org/"
-SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v1.4.22/Remmina-v1.4.22.tar.gz -> remmina-1.4.22.tar.gz"
+SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v1.4.23/Remmina-v1.4.23.tar.gz -> remmina-1.4.23.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
