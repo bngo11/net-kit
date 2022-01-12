@@ -6,7 +6,7 @@ inherit cmake
 
 MY_P=${P/_/-}
 S="${WORKDIR}/${MY_P}"
-SRC_URI="https://github.com/FreeRDP/FreeRDP/releases/download/2.4.1/freerdp-2.4.1.tar.gz -> freerdp-2.4.1.tar.gz"
+SRC_URI="https://github.com/FreeRDP/FreeRDP/releases/download/2.5.0/freerdp-2.5.0.tar.gz -> freerdp-2.5.0.tar.gz"
 KEYWORDS="*"
 
 DESCRIPTION="Free implementation of the Remote Desktop Protocol"
