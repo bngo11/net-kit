@@ -2,13 +2,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3+ )
+PYTHON_COMPAT=(  )
 inherit autotools fcaps linux-info python-r1 systemd user
 
 DESCRIPTION="Linux real time system monitoring, done right!"
 HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 LICENSE="GPL-3+ MIT BSD"
-SRC_URI="https://github.com/netdata/netdata/releases/download/1.32.1/netdata-v1.32.1.tar.gz"
+SRC_URI="https://github.com/netdata/netdata/releases/download/v1.33.0/netdata-v1.33.0.tar.gz -> netdata-v1.33.0.tar.gz"
 
 SLOT="0"
 KEYWORDS="*"

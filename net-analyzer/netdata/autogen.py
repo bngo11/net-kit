@@ -2,31 +2,38 @@
 
 import json
 
-
 async def generate(hub, **pkginfo):
+	json_data = await hub.pkgtools.fetch.get_page("https://api.github.com/repos/netdata/netdata/releases", is_json=True)
+	version = None
+	url = None
 
-	github_user = "netdata"
-	github_repo = pkginfo["name"]
-	json_list = await hub.pkgtools.fetch.get_page(
-		f"https://api.github.com/repos/{github_user}/{github_repo}/releases", is_json=True
-	)
+	for item in json_data:
+		try:
+			if item["prerelease"] or item["draft"]:
+				continue
 
-	for rel in json_list:
-		tag = rel["tag_name"]
-		# NOTE: Some tags have had 'v' prepended, some have none.
-		version = tag.lstrip("v")
-		url = f"https://github.com/{github_user}/{github_repo}/releases/download/{version}/{github_user}-v{version}.tar.gz"
-		break
+			version = item["tag_name"].lstrip("v")
+			list(map(int, version.split(".")))
 
-	ebuild = hub.pkgtools.ebuild.BreezyBuild(
-		**pkginfo,
-		python_compat="python3+",
-		version=version,
-		github_user=github_user,
-		github_repo=github_repo,
-		artifacts=[hub.pkgtools.ebuild.Artifact(url=url)],
-	)
-	ebuild.push()
+			for asset in item['assets']:
+				asset_name = asset["name"]
 
+				if asset_name == f"netdata-v{version}.tar.gz":
+					url = asset["browser_download_url"]
+					break
+
+			if url:
+				break
+
+		except (KeyError, IndexError, ValueError):
+			continue
+
+	if version and url:
+		ebuild = hub.pkgtools.ebuild.BreezyBuild(
+			**pkginfo,
+			version=version,
+			artifacts=[hub.pkgtools.ebuild.Artifact(url=url, final_name=asset_name)]
+		)
+		ebuild.push()
 
 # vim: ts=4 sw=4 noet
