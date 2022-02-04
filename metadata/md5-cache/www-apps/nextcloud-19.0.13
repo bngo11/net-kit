@@ -10,4 +10,5 @@ RDEPEND=dev-lang/php[curl?,filter,gd,hash(+),intl,json,mysql?,pdo,posix,postgres
 REQUIRED_USE=|| ( mysql postgres sqlite )
 SLOT=19.0.13
 SRC_URI=https://download.nextcloud.com/server/releases/nextcloud-19.0.13.tar.bz2
+_eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
 _md5_=ea04a282693f94dd7e046816012fbc31
