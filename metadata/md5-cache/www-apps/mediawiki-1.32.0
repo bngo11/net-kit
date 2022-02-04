@@ -10,5 +10,4 @@ RDEPEND=>=dev-lang/php-7.0.0[fileinfo,iconv,json,mysql?,postgres?,session,ssl,un
 RESTRICT=test
 SLOT=1.32.0
 SRC_URI=http://releases.wikimedia.org/mediawiki/1.32/mediawiki-1.32.0.tar.gz
-_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	webapp	16783e418aca3ffa461d68310bf7ab12
 _md5_=1c039fdfadca6d6bde5103d053a90bdf
