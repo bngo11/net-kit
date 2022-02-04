@@ -2,7 +2,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(  )
+PYTHON_COMPAT=( python3+ )
 inherit autotools fcaps linux-info python-r1 systemd user
 
 DESCRIPTION="Linux real time system monitoring, done right!"

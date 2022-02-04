@@ -31,6 +31,7 @@ async def generate(hub, **pkginfo):
 	if version and url:
 		ebuild = hub.pkgtools.ebuild.BreezyBuild(
 			**pkginfo,
+			python_compat="python3+",
 			version=version,
 			artifacts=[hub.pkgtools.ebuild.Artifact(url=url, final_name=asset_name)]
 		)

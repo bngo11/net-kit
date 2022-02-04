@@ -12,7 +12,6 @@ async def generate(hub, **pkginfo):
 	)
 
 	for rel in json_list:
-		print(rel)
 		version = rel["name"].replace("wireshark-", "")
 		if 'tarball_url' in rel:
 			url = rel['tarball_url']
