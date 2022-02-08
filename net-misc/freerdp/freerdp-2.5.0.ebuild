@@ -4,8 +4,6 @@ EAPI=7
 
 inherit cmake
 
-MY_P=${P/_/-}
-S="${WORKDIR}/${MY_P}"
 SRC_URI="https://github.com/FreeRDP/FreeRDP/releases/download/2.5.0/freerdp-2.5.0.tar.gz -> freerdp-2.5.0.tar.gz"
 KEYWORDS="*"
 
@@ -14,7 +12,7 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg openh264 pulseaudio +server smartcard systemd test usb wayland X xinerama xv"
+IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
