@@ -7,5 +7,4 @@ LICENSE=MIT
 PROPERTIES=live
 RDEPEND=app-shells/bash net-misc/rsync[xattr] sys-apps/systemd
 SLOT=0
-_eclasses_=git-r3	7dcb8a92f5a091f13e82494fa317ca4b
 _md5_=7925e802cbfc86c581b6ac56651c62e1
