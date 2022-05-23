@@ -1,0 +1,12 @@
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst prepare unpack
+DESCRIPTION=A tool for building, changing, and combining infrastructure safely
+EAPI=7
+HOMEPAGE=https://www.terraform.io/
+KEYWORDS=*
+LICENSE=MPL-2.0
+RESTRICT=test network-sandbox
+SLOT=0
+SRC_URI=https://github.com/hashicorp/terraform/archive/v1.2.0.tar.gz -> terraform-1.2.0.tar.gz
+_eclasses_=go-module	8e53ba8e864ebafd9a9e3abe8595666a	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=cbe9024d23ad7add715acce825925573
