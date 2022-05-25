@@ -8,4 +8,5 @@ LICENSE=GPL-3+
 RDEPEND=app-crypt/gpgme:= sys-libs/ncurses:0= net-mail/notmuch sys-apps/coreutils
 SLOT=0
 SRC_URI=https://github.com/wangp/bower/archive/0.10.tar.gz -> bower-0.10.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045
 _md5_=6d9c683b1ff5e8c96de01288933ccccf
