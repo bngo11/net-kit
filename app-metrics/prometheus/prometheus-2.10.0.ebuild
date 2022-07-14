@@ -1,37 +1,48 @@
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit go-module user
+EAPI=6
+inherit user golang-build golang-vcs-snapshot
 
-MY_PV=v${PV}
+EGO_PN="github.com/prometheus/prometheus"
+MY_PV=v${PV/_rc/-rc.}
+PROMETHEUS_COMMIT="d20e84d"
+KEYWORDS="~amd64"
 
 DESCRIPTION="Prometheus monitoring system and time series database"
 HOMEPAGE="https://github.com/prometheus/prometheus"
-SRC_URI="https://github.com/prometheus/prometheus/archive/v2.36.2.tar.gz -> prometheus-2.36.2.tar.gz"
-
+SRC_URI="https://${EGO_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="*"
 IUSE=""
 
-BDEPEND="sys-apps/yarn"
-DEPEND="!app-metrics/prometheus-bin"
+DEPEND="
+	>=dev-lang/go-1.12
+	>=dev-util/promu-0.3.0"
 
 PROMETHEUS_HOME="/var/lib/prometheus"
 
-RESTRICT+="test network-sandbox"
+RESTRICT="test"
 
 pkg_setup() {
 	enewgroup prometheus
 	enewuser prometheus -1 -1 "${PROMETHEUS_HOME}" prometheus
 }
 
+src_prepare() {
+	default
+	sed -i -e "s/{{.Revision}}/${PROMETHEUS_COMMIT}/" src/${EGO_PN}/.promu.yml || die
+}
+
 src_compile() {
-	make build || die
+	pushd src/${EGO_PN} || die
+	GO111MODULE=on GOPATH="${S}" GOCACHE="${T}/go-cache" promu build -v || die
+	popd || die
 }
 
 src_install() {
-	dobin prometheus promtool
+	pushd src/${EGO_PN} || die
+	dobin promtool prometheus
 	dodoc -r {documentation,{README,CHANGELOG,CONTRIBUTING}.md}
 	insinto /etc/prometheus
 	doins documentation/examples/prometheus.yml
@@ -39,6 +50,7 @@ src_install() {
 	doins -r console_libraries consoles
 	dosym ../../usr/share/prometheus/console_libraries /etc/prometheus/console_libraries
 	dosym ../../usr/share/prometheus/consoles /etc/prometheus/consoles
+	popd || die
 
 	newinitd "${FILESDIR}"/prometheus.initd prometheus
 	newconfd "${FILESDIR}"/prometheus.confd prometheus
