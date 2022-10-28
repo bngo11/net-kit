@@ -2,7 +2,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit meson
 
 DESCRIPTION="Mobile Broadband Interface Model (MBIM) modem protocol helper library"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/libmbim/ https://gitlab.freedesktop.org/mobile-broadband/libmbim"
@@ -17,20 +17,3 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
-
-src_prepare() {
-	default
-	eautoreconf
-}
-
-src_configure() {
-	econf \
-		--disable-Werror \
-		--disable-static \
-		--disable-gtk-doc
-}
-
-src_install() {
-	default
-	find "${ED}" -name '*.la' -delete || die
-}
