@@ -8,7 +8,7 @@ PYTHON_REQ_USE="xml"
 inherit linux-info python-any-r1
 
 ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
-KEYWORDS="*"
+KEYWORDS="amd64 arm arm64 ppc64 x86"
 VPNC_VER=20200930
 SRC_URI="${ARCHIVE_URI}
 	ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-${VPNC_VER}.tar.gz"

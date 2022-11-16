@@ -4,11 +4,11 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit toolchain-funcs flag-o-matic lua-single user
+inherit toolchain-funcs flag-o-matic lua-single systemd user
 
 DESCRIPTION="Small forwarding DNS server"
 HOMEPAGE="http://www.thekelleys.org.uk/dnsmasq/doc.html"
-SRC_URI="https://thekelleys.org.uk/dnsmasq/dnsmasq-2.87.tar.xz -> dnsmasq-2.87.tar.xz"
+SRC_URI="http://www.thekelleys.org.uk/dnsmasq/dnsmasq-2.87.tar.xz -> dnsmasq-2.87.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
@@ -204,6 +204,8 @@ src_install() {
 			doman contrib/lease-tools/dhcp_release6.1
 		fi
 	fi
+
+	systemd_newunit "${FILESDIR}"/${PN}.service-r1 ${PN}.service
 }
 
 pkg_preinst() {
