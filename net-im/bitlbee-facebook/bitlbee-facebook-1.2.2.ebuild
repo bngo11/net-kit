@@ -1,7 +1,6 @@
-# Copyright 2017-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -17,15 +16,15 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/bitlbee/bitlbee-facebook"
 else
 	SRC_URI="https://github.com/bitlbee/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="*"
 fi
 
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/json-glib
 	>=net-im/bitlbee-3[plugins]"
-DEPEND="${RDEPEND}
-	dev-util/glib-utils
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig"
 
 src_prepare() {

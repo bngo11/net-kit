@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install
+DEPEND=>=dev-libs/glib-2.16:2 net-dns/libidn:= ssl? ( !openssl? ( >=net-libs/gnutls-1.4.0:0= ) openssl? ( dev-libs/openssl:0= ) ) asyncns? ( >=net-libs/libasyncns-0.3 ) test? ( dev-libs/check )
+DESCRIPTION=Lightweight C Jabber library
+EAPI=7
+HOMEPAGE=https://mcabber.com
+IUSE=asyncns ssl openssl test
+KEYWORDS=*
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/glib-2.16:2 net-dns/libidn:= ssl? ( !openssl? ( >=net-libs/gnutls-1.4.0:0= ) openssl? ( dev-libs/openssl:0= ) ) asyncns? ( >=net-libs/libasyncns-0.3 )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://mcabber.com/files/loudmouth/loudmouth-1.5.4.tar.bz2
+_md5_=e0b18745d46ef7c0b04370037343bddc
