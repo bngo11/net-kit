@@ -66,7 +66,6 @@ DEPEND="${RDEPEND}
 	>=app-emulation/spice-protocol-${SPICE_PROTOCOL_VER}"
 BDEPEND="
 	dev-perl/Text-CSV
-	dev-util/glib-utils
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
