@@ -1,6 +1,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 VALA_USE_DEPEND="vapigen"
 PYTHON_COMPAT=( python3+ )
 
@@ -10,11 +11,12 @@ DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and 
 HOMEPAGE="https://www.spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"
 SRC_URI="https://www.spice-space.org/download/gtk/${P}.tar.xz"
 KEYWORDS="*"
-SPICE_PROTOCOL_VER=0.14.3
+
+SPICE_PROTOCOL_VER=0.14.4
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="+gtk3 +introspection lz4 mjpeg policykit sasl smartcard +usbredir vala wayland webdav"
+IUSE="+gtk3 +introspection lz4 mjpeg policykit sasl smartcard usbredir vala wayland webdav"
 
 # TODO:
 # * check if sys-freebsd/freebsd-lib (from virtual/acl) provides acl/libacl.h
@@ -47,23 +49,24 @@ RDEPEND="
 		)
 	)
 	webdav? (
-		net-libs/phodav:2.0
-		>=net-libs/libsoup-2.49.91:2.4
+		net-libs/phodav:3.0
+		net-libs/libsoup:3.0
 	)
 "
-# TODO: spice-gtk has an automagic dependency on x11-libs/libva without a
+# TODO: spice-gtk has an automagic dependency on media-libs/libva without a
 # configure knob. The package is relatively lightweight so we just depend
 # on it unconditionally for now. It would be cleaner to transform this into
 # a USE="vaapi" conditional and patch the buildsystem...
 RDEPEND="${RDEPEND}
-	amd64? ( x11-libs/libva:= )
-	arm64? ( x11-libs/libva:= )
-	x86? ( x11-libs/libva:= )
+	amd64? ( media-libs/libva:= )
+	arm64? ( media-libs/libva:= )
+	x86? ( media-libs/libva:= )
 "
 DEPEND="${RDEPEND}
 	>=app-emulation/spice-protocol-${SPICE_PROTOCOL_VER}"
 BDEPEND="
 	dev-perl/Text-CSV
+	dev-util/glib-utils
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
@@ -81,7 +84,7 @@ python_check_deps() {
 src_prepare() {
 	default
 
-	use vala && vala_src_prepare
+	use vala && vala_setup
 }
 
 src_configure() {
