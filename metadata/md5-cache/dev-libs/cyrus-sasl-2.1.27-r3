@@ -12,4 +12,4 @@ REQUIRED_USE=ldapdb? ( openldap )
 SLOT=2
 SRC_URI=https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.27/cyrus-sasl-2.1.27.tar.gz
 _eclasses_=autotools	5223f703a2e9c194fcda924f8c4b6baf	db-use	501a5d0963e0d17f30260023f292ae8e	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	d0939f99dd528dd0c5ec25284877bf5c	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	dd352559d0e143500ec878acc74da909	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	756a09f72c4cdbb55f2694c95f1e0860	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=410a3a2d07b11b53eb19245f06b3bbe3
+_md5_=39fa0bd0d3642651c708f7c70fab1a05

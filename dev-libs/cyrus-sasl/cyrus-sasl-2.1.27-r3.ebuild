@@ -97,6 +97,7 @@ src_configure() {
 		--disable-krb4
 		--disable-macos-framework
 		--enable-otp
+		--without-mysql
 		--without-sqlite
 		--with-saslauthd="${EPREFIX}"/run/saslauthd
 		--with-pwcheck="${EPREFIX}"/run/saslauthd
