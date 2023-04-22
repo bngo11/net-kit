@@ -4,7 +4,7 @@ EAPI=7
 
 inherit toolchain-funcs user
 
-SRC_URI="{{artifacts[0].src_uri}}"
+SRC_URI="https://github.com/NetworkConfiguration/dhcpcd/tarball/5d9bf80c26b4b7dc9d8aa175d96d5a24e75b4d48 -> dhcpcd-10.0.1-5d9bf80.tar.gz"
 KEYWORDS="*"
 
 DESCRIPTION="A fully featured, yet light weight RFC2131 compliant DHCP client"
@@ -22,7 +22,7 @@ RDEPEND="
 
 post_src_unpack() {
 	if [ ! -d "${S}" ]; then
-		mv {{ github_user }}-{{ github_repo }}-* "${S}" || die
+		mv NetworkConfiguration-dhcpcd-* "${S}" || die
 	fi
 }
 
