@@ -15,7 +15,6 @@
 =net-mail/mailman-2.1.29 python_single_target_python2_7 python_targets_python2_7
 =net-mail/notmuch-0.23.7 python_single_target_python2_7 python_targets_python2_7
 =net-mail/rss2email-2.71-r1 python_single_target_python2_7 python_targets_python2_7
-=net-misc/crossbar-17.6.1_p3-r1 python_single_target_python2_7 python_targets_python2_7
 =net-misc/exabgp-3.2.17 python_single_target_python2_7 python_targets_python2_7
 =net-misc/exabgp-3.4.26-r1 python_single_target_python2_7 python_targets_python2_7
 =net-misc/httpie-0.9.2 python_single_target_python2_7 python_targets_python2_7
@@ -69,7 +68,7 @@ net-misc/dropbox-cli python_single_target_python2_7 python_targets_python2_7
 net-misc/gsutil python_single_target_python2_7 python_targets_python2_7
 net-misc/hblink python_single_target_python2_7 python_targets_python2_7
 net-misc/irrtree python_single_target_python2_7 python_targets_python2_7
-net-misc/livestreamer python_single_target_python3_3 python_targets_python3_3
+net-misc/livestreamer python_single_target_python2_7 python_targets_python2_7
 net-misc/pssh python_single_target_python2_7 python_targets_python2_7
 net-misc/pulseaudio-dlna python_single_target_python2_7 python_targets_python2_7
 net-misc/pycnb python_single_target_python2_7 python_targets_python2_7
@@ -80,7 +79,7 @@ net-misc/switzerland python_single_target_python2_7 python_targets_python2_7
 net-misc/usbip python_single_target_python2_6 python_targets_python2_6
 net-misc/vde python_single_target_python2_7 python_targets_python2_7
 net-nds/nsscache python_single_target_python2_7 python_targets_python2_7
-net-news/rawdog python_single_target_pypy python_targets_pypy
+net-news/rawdog python_single_target_python2_7 python_targets_python2_7
 net-nntp/sabnzbd python_single_target_python2_7 python_targets_python2_7
 net-p2p/nicotine+ python_single_target_python2_7 python_targets_python2_7
 net-p2p/pybitmessage python_single_target_python2_7 python_targets_python2_7
