@@ -2,8 +2,6 @@ coredns:
   generator: github-1
   packages:
     - coredns:
-        extensions:
-          - golang
         github:
           query: releases
           # Filter out bogus release versions:
