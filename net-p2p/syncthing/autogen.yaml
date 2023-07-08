@@ -2,5 +2,7 @@ syncthing:
   generator: github-1
   packages:
     - syncthing:
+        extensions:
+          - golang
         github:
           query: releases

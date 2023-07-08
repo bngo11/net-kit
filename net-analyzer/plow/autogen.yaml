@@ -2,6 +2,8 @@ plow:
   generator: github-1
   packages:
     - plow:
+        extensions:
+          - golang
         github:
           user: six-ddc
           query: releases
