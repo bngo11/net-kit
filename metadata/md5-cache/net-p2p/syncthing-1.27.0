@@ -1,0 +1,14 @@
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst postrm prepare setup test unpack
+DEPEND=>=dev-lang/go-1.17 sys-apps/shadow
+DESCRIPTION=Open Source Continuous File Synchronization
+EAPI=7
+HOMEPAGE=https://github.com/syncthing/syncthing
+IUSE=tools
+KEYWORDS=*
+LICENSE=Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0 Unlicense
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/syncthing/syncthing/tarball/737a3744c882368acc4ce82018b5aad32b867229 -> syncthing-1.27.0-737a374.tar.gz https://direct.funtoo.org/84/73/e5/8473e52528233d46c125577b606991d3a96e69a30d321a807dc04631aa5e745135fe1919250d2b10270038cf6cf2bb393329937ac69f432ccf17167941cf25c4 -> syncthing-1.27.0-funtoo-go-bundle-d3a8cd09bbd618068f70706c449be43ed8c54d9357b535cf9d472a8f4d290147fa37fca7320ff9e9aa548ec64a74083f13808fbfe99c38b95c88f4f4c162a723.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	go-module	cb10a443c46556a15ed035d7a99128e8	user	875055ddd565382c728563992ae3abf7	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=d75a67de37f40292b4a6bef267d8ca43
