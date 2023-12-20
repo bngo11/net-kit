@@ -17,6 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/openssl:0=
+	dev-libs/pkcs11-helper
 	sys-libs/zlib:0
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
