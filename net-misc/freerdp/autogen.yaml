@@ -7,3 +7,9 @@ freerdp:
           user: FreeRDP
           repo: FreeRDP
           query: releases
+        versions:
+          2.11.4:
+            template: freerdp-2.tmpl
+          latest:
+            template: freerdp.tmpl
+
