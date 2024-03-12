@@ -13,7 +13,6 @@ async def generate(hub, **pkginfo):
 	hub.pkgtools.model.log.debug(f"Download page URL: {dnl_page}")
 
 	for a in BeautifulSoup(dnl_page, features="html.parser").find_all("a", href=True):
-		print(a)
 		v = re.search("(?<=chirp-)\d+(?=\.tar\.gz)", a["href"])
 		if v is not None:
 			version = v.group(0)
