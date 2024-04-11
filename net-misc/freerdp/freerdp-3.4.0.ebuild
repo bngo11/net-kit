@@ -12,11 +12,12 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg +fuse gstreamer jpeg openh264 pulseaudio sdl server smartcard systemd test usb wayland X xinerama xv"
+IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg +fuse gstreamer jpeg openh264 pulseaudio sdl server smartcard test usb wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/openssl:0=
+	dev-libs/pkcs11-helper
 	sys-libs/zlib:0
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
@@ -45,6 +46,7 @@ RDEPEND="
 		x11-libs/libXrandr
 	)
 	jpeg? ( virtual/jpeg:0 )
+	kerberos? ( virtual/krb5 )
 	openh264? ( media-libs/openh264:0= )
 	pulseaudio? ( media-sound/pulseaudio )
 	sdl? (
@@ -66,7 +68,6 @@ RDEPEND="
 		dev-libs/pkcs11-helper
 		sys-apps/pcsc-lite
 	)
-	systemd? ( sys-apps/systemd:0= )
 	wayland? (
 		dev-libs/wayland
 		x11-libs/libxkbcommon
@@ -104,13 +105,15 @@ src_configure() {
 		-DWITH_FUSE=$(usex fuse ON OFF)
 		-DWITH_GSTREAMER_1_0=$(usex gstreamer ON OFF)
 		-DWITH_JPEG=$(usex jpeg ON OFF)
+		-DWITH_KRB5=$(usex kerberos ON OFF)
+		-DWITH_FUSE=$(usex fuse ON OFF)
 		-DWITH_NEON=$(usex cpu_flags_arm_neon ON OFF)
 		-DWITH_OPENH264=$(usex openh264 ON OFF)
 		-DWITH_PULSE=$(usex pulseaudio ON OFF)
 		-DWITH_SERVER=$(usex server ON OFF)
 		-DWITH_PCSC=$(usex smartcard ON OFF)
 		-DWITH_PKCS11=$(usex smartcard ON OFF)
-		-DWITH_LIBSYSTEMD=$(usex systemd ON OFF)
+		-DWITH_LIBSYSTEMD=OFF
 		-DWITH_X11=$(usex X ON OFF)
 		-DWITH_XINERAMA=$(usex xinerama ON OFF)
 		-DWITH_XV=$(usex xv ON OFF)
@@ -119,3 +122,5 @@ src_configure() {
 	)
 	cmake_src_configure
 }
+
+# vim: noet ts=4 syn=ebuild
