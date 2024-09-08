@@ -10,7 +10,7 @@ inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils xdg-utils cmake 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
 
-SRC_URI="https://github.com/wireshark/wireshark/tarball/f5c7c25a81ebd5e2cd431f9e2d424586c6250812 -> wireshark-4.0.10-f5c7c25.tar.gz"
+SRC_URI="https://www.wireshark.org/download/src/all-versions/wireshark-4.4.0.tar.xz -> wireshark-4.4.0.tar.xz"
 KEYWORDS="*"
 S="${WORKDIR}/${P/_/}"
 
@@ -101,6 +101,16 @@ REQUIRED_USE="
 
 RESTRICT="test"
 
+PATCHES=(
+    "${FILESDIR}/wireshark-0002-Customize-permission-denied-error.patch"
+    "${FILESDIR}/wireshark-0003-fix-string-overrun-in-plugins-profinet.patch"
+    "${FILESDIR}/wireshark-0004-Restore-Fedora-specific-groups.patch"
+    "${FILESDIR}/wireshark-0005-Fix-paths-in-a-wireshark.desktop-file.patch"
+    "${FILESDIR}/wireshark-0006-Move-tmp-to-var-tmp.patch"
+    "${FILESDIR}/wireshark-0007-cmakelists.patch"
+    "${FILESDIR}/wireshark-0008-pkgconfig.patch"
+)
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 	enewgroup pcap
@@ -108,19 +118,8 @@ pkg_setup() {
 
 post_src_unpack() {
 	if [ ! -d "${S}" ] ; then
-		mv "${WORKDIR}"/wireshark-wireshark* "${S}" || die
+		mv "${WORKDIR}"/-* "${S}" || die
 	fi
-}
-
-src_prepare() {
-	default
-	sed -i \
-		-e '/find_program(RPMBUILD_EXECUTABLE/d' \
-		${S}/CMakeLists.txt || die "sed 1"
-	sed -i \
-		-e '/pkg_search_module.*LUA/s/(LUA.*)/(LUA lua)/' \
-		${S}/cmake/modules/FindLUA.cmake || die "sed 2"
-	cmake_src_prepare
 }
 
 src_configure() {
@@ -220,7 +219,7 @@ src_install() {
 	cmake_src_install
 
 	# FAQ is not required as is installed from help/faq.txt
-	dodoc AUTHORS ChangeLog NEWS README* doc/randpkt.txt doc/README*
+	dodoc AUTHORS ChangeLog README* doc/randpkt.txt doc/README*
 
 	# install headers
 	insinto /usr/include/wireshark
