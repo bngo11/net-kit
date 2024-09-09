@@ -21,6 +21,7 @@ pathlib2:
   generator: pypi-simple-1
   packages:
     - pathlib2:
+        du_pep517: setuptools
         pydeps:
           py:3:build:
             - setuptools
