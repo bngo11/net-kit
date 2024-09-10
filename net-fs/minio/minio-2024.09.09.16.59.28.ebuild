@@ -433,8 +433,8 @@ EGO_SUM=(
 	"github.com/minio/kms-go/kes v0.3.0/go.mod"
 	"github.com/minio/kms-go/kms v0.4.0"
 	"github.com/minio/kms-go/kms v0.4.0/go.mod"
-	"github.com/minio/madmin-go/v3 v3.0.64"
-	"github.com/minio/madmin-go/v3 v3.0.64/go.mod"
+	"github.com/minio/madmin-go/v3 v3.0.66"
+	"github.com/minio/madmin-go/v3 v3.0.66/go.mod"
 	"github.com/minio/mc v0.0.0-20240826104958-a55d9a8d17da"
 	"github.com/minio/mc v0.0.0-20240826104958-a55d9a8d17da/go.mod"
 	"github.com/minio/md5-simd v1.1.2"
@@ -453,8 +453,8 @@ EGO_SUM=(
 	"github.com/minio/sha256-simd v0.1.1/go.mod"
 	"github.com/minio/simdjson-go v0.4.5"
 	"github.com/minio/simdjson-go v0.4.5/go.mod"
-	"github.com/minio/sio v0.4.0"
-	"github.com/minio/sio v0.4.0/go.mod"
+	"github.com/minio/sio v0.4.1"
+	"github.com/minio/sio v0.4.1/go.mod"
 	"github.com/minio/websocket v1.6.0"
 	"github.com/minio/websocket v1.6.0/go.mod"
 	"github.com/minio/xxml v0.0.3"
@@ -888,8 +888,8 @@ EGO_SKIP_TIDY=1
 DESCRIPTION="An Amazon S3 compatible object storage server"
 HOMEPAGE="https://min.io/ https://github.com/minio/minio"
 SRC_URI="
-https://api.github.com/repos/minio/minio/tarball/RELEASE.2024-08-29T01-40-52Z -> minio-RELEASE.2024-08-29T01-40-52Z.tar.gz
-https://direct.funtoo.org/40/ec/b8/40ecb899a546813484c893b56554c6a51ce8c7e1ce6f45773dfab9351a90c63c5c2f92c35676907a99b21cec42d02bcc361ef4674a1a1e3604845fce90520287 -> minio-2024.08.29.01.40.52-funtoo-go-bundle-45ef0fc97486745c2dbbb169b327ae17515d350cbae611866778796bfab9aed6697a5816c7dd698027b420690b743456cb5edf901f4694e582eee560227596d5.tar.gz"
+https://api.github.com/repos/minio/minio/tarball/RELEASE.2024-09-09T16-59-28Z -> minio-RELEASE.2024-09-09T16-59-28Z.tar.gz
+https://direct.funtoo.org/52/bc/df/52bcdfec03a4b8bcad9c7b185e5e8fc46a55c9fbf6897ff9bcad725a0053e6b836be5a5ad8685fe1309e7a1065fd7387d3c2ada8072c25f1e18cf76f579ab04c -> minio-2024.09.09.16.59.28-funtoo-go-bundle-f3372ba00662ad6c81f657d487a1052892a5a6374c154dc579fe2c713e998bc8aabc2d035fffff05372ba8aa5bf7a99ae41cdbee0a4f5f7781f57a28e22cad8e.tar.gz"
 
 MY_PV="$(ver_cut 1-3)T$(ver_cut 4-7)Z"
 MY_PV=${MY_PV//./-}
