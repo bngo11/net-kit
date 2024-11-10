@@ -64,8 +64,8 @@ EGO_SUM=(
 	"github.com/godbus/dbus/v5 v5.0.4/go.mod"
 	"github.com/gogo/protobuf v1.3.2"
 	"github.com/gogo/protobuf v1.3.2/go.mod"
-	"github.com/golang-jwt/jwt/v4 v4.5.0"
-	"github.com/golang-jwt/jwt/v4 v4.5.0/go.mod"
+	"github.com/golang-jwt/jwt/v4 v4.5.1"
+	"github.com/golang-jwt/jwt/v4 v4.5.1/go.mod"
 	"github.com/golang/protobuf v1.2.0/go.mod"
 	"github.com/golang/protobuf v1.5.4"
 	"github.com/golang/protobuf v1.5.4/go.mod"
@@ -344,8 +344,8 @@ EGO_SKIP_TIDY=1
 DESCRIPTION="Fast tool to manage MinIO clusters"
 HOMEPAGE="https://min.io/ https://github.com/minio/mc"
 SRC_URI="
-https://api.github.com/repos/minio/mc/tarball/RELEASE.2024-10-29T15-34-59Z -> minio-client-RELEASE.2024-10-29T15-34-59Z.tar.gz
-https://direct.funtoo.org/43/05/d7/4305d7cfd7fb459e86eae8f4c55e5255fa3e3bc0586956859824b29f0f32d99c213d79dfb2c183250ef23915ffd8ae18ed858d7a3ad18b41ac9cf2f478439691 -> minio-client-2024.10.29.15.34.59-funtoo-go-bundle-2a460a1882f5426deafa09d5897a7dc6556d58e5880d9c7e60c77bfd1439191800338d8f52d17d143b8b7e338df2fa40d8b024e1d9ee573c3118c6d0bd73d377.tar.gz"
+https://api.github.com/repos/minio/mc/tarball/RELEASE.2024-11-05T11-29-45Z -> minio-client-RELEASE.2024-11-05T11-29-45Z.tar.gz
+https://direct.funtoo.org/90/cb/ff/90cbff1a53949c1b5cf8a9134d4549381d4f443325b053ac574c23ab9bcf6459c45d4d1e0e89f1a7f99aa7e3074b42b9b50a741789952fce5071c6a1b5a2d5c7 -> minio-client-2024.11.05.11.29.45-funtoo-go-bundle-af7d0935c8a3b405b100fe791d17fb6a072d2f9720e2c38e28889939c2c34d9edabe4f17efcb385a961d59256962b85c61aa61ff5f012f83972e890ffbcd7ba4.tar.gz"
 
 MY_PV="$(ver_cut 1-3)T$(ver_cut 4-7)Z"
 MY_PV=${MY_PV//./-}
