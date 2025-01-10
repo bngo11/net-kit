@@ -87,6 +87,8 @@ BDEPEND="
 "
 
 src_configure() {
+	export CMAKE_BUILD_TYPE=Release
+
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)
 		-DCHANNEL_URBDRC=$(usex usb ON OFF)
