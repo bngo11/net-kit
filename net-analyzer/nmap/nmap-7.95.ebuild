@@ -13,6 +13,7 @@ inherit autotools flag-o-matic lua-single python-single-r1 toolchain-funcs
 DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
 SRC_URI="https://nmap.org/dist/${P}.tar.bz2"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-7.95-patches-2.tar.xz"
 
 LICENSE="|| ( NPSL GPL-2 )"
 SLOT="0"
@@ -38,17 +39,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.10_beta1-string.patch
-	"${FILESDIR}"/${PN}-5.21-python.patch
-	"${FILESDIR}"/${PN}-6.46-uninstaller.patch
-	"${FILESDIR}"/${PN}-6.25-liblua-ar.patch
-	"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch
-	"${FILESDIR}"/${PN}-7.25-libpcre.patch
-	"${FILESDIR}"/${PN}-7.31-libnl.patch
-	"${FILESDIR}"/${PN}-7.80-ac-config-subdirs.patch
-	"${FILESDIR}"/${PN}-7.91-no-FORTIFY_SOURCE.patch
-	"${FILESDIR}"/${P}-ncat-proxy.patch
-	"${FILESDIR}"/${P}-ncat-unix-sockets.patch
+	"${WORKDIR}"/${PN}-7.95-patches-2
 )
 
 pkg_setup() {
