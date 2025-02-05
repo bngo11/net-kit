@@ -6,7 +6,7 @@ import re
 
 async def get_lang_artifacts(hub, version):
 	lang_page = await hub.pkgtools.fetch.get_page(
-		f"https://archive.mozilla.org/pub/thunderbird/releases/{version}/linux-x86_64/xpi/"
+		f"https://ftp.mozilla.org/pub/thunderbird/releases/{version}/linux-x86_64/xpi/"
 	)
 	lang_codes = []
 	artifacts = []
@@ -15,7 +15,7 @@ async def get_lang_artifacts(hub, version):
 		lang_codes.append(lang_code)
 		artifacts.append(
 			hub.pkgtools.ebuild.Artifact(
-				url="https://archive.mozilla.org" + lang_path, final_name=f"thunderbird-{version}-{lang_code}.xpi"
+				url="https://ftp.mozilla.org" + lang_path, final_name=f"thunderbird-{version}-{lang_code}.xpi"
 			)
 		)
 	return dict(artifacts=artifacts, lang_codes=lang_codes)
@@ -26,8 +26,8 @@ def get_artifact(hub, version, arch):
 		moz_arch = "x86_64"
 	elif arch == "x86":
 		moz_arch = "i686"
-	url = f"https://archive.mozilla.org/pub/thunderbird/releases/{version}/linux-{moz_arch}/en-US/thunderbird-{version}.tar.bz2"
-	final_name = f"thunderbird-bin_{moz_arch}-{version}.tar.bz2"
+	url = f"https://ftp.mozilla.org/pub/thunderbird/releases/{version}/linux-{moz_arch}/en-US/thunderbird-{version}.tar.xz"
+	final_name = f"thunderbird-bin_{moz_arch}-{version}.tar.xz"
 	return hub.pkgtools.ebuild.Artifact(url=url, final_name=final_name)
 
 
