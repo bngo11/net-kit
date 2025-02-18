@@ -6,8 +6,11 @@ import re
 
 
 def get_release(release_data):
-	return sorted(release_data, key=lambda x: generic.parse(x["ref"])).pop()
-
+	release_data.reverse()
+	for rel in release_data:
+		version = rel.get("ref").split("/")[-1]
+		list(map(int, version.split(".")))
+		return rel
 
 async def generate(hub, **pkginfo):
 	user = "ArcticaProject"

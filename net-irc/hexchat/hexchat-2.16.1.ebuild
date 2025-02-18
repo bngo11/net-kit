@@ -5,20 +5,19 @@ EAPI=7
 LUA_COMPAT=( lua5-{1..4} luajit )
 PYTHON_COMPAT=( python3+ )
 
-inherit lua-single meson mono-env python-single-r1 xdg
+inherit flag-o-matic lua-single meson mono-env python-single-r1 xdg
 
 DESCRIPTION="Graphical IRC client based on XChat"
 HOMEPAGE="https://hexchat.github.io/"
 
-#SRC_URI="https://dl.hexchat.net/${PN}/${P}.tar.xz"
-SRC_URI="https://dl.hexchat.net/hexchat//hexchat-2.16.1.tar.xz -> hexchat-2.16.1.tar.xz"
+SRC_URI="https://dl.hexchat.net/${PN}/${P}.tar.xz"
 KEYWORDS="*"
 
 LICENSE="GPL-2 plugin-fishlim? ( MIT )"
 SLOT="0"
-
 IUSE="dbus debug +gtk libcanberra lua perl plugin-checksum plugin-fishlim plugin-sysinfo python ssl theme-manager"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
+	plugin-fishlim? ( ssl )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
@@ -41,7 +40,10 @@ RDEPEND="
 	ssl? ( dev-libs/openssl:0= )
 	theme-manager? (
 		|| (
-			( dev-lang/mono[minimal] dev-dotnet/libgdiplus )
+			(
+				dev-lang/mono[minimal]
+				dev-dotnet/libgdiplus
+			)
 			dev-lang/mono[-minimal]
 		)
 	)"
@@ -64,6 +66,9 @@ pkg_setup() {
 }
 
 src_configure() {
+	# LTO type mismatch, https://bugs.gentoo.org/861458
+	filter-lto
+
 	local emesonargs=(
 		-Ddbus-service-use-appid=false
 		-Dinstall-appdata=false
@@ -114,7 +119,6 @@ pkg_postinst() {
 	elog "optional dependencies:"
 	elog "  media-sound/sox (sound playback if you don't have libcanberra"
 	elog "    enabled)"
-	elog "  x11-plugins/hexchat-javascript (javascript support)"
 	elog "  x11-themes/sound-theme-freedesktop (default BEEP sound,"
 	elog "    needs libcanberra enabled)"
 }

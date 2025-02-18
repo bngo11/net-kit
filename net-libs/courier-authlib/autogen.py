@@ -1,34 +1,33 @@
 #!/usr/bin/env python3
 
 from bs4 import BeautifulSoup
-from packaging import version
-import re
-import json
 
 async def generate(hub, **pkginfo):
-    project_root = "courier"
-    project_name = "authlib"
+	html_data = await hub.pkgtools.fetch.get_page(f"https://sourceforge.net/projects/courier/files/authlib/")
+	soup = BeautifulSoup(html_data, "html.parser")
+	links = soup.find_all("span")
+	version = None
 
-    sourceforge_url = f"https://sourceforge.net/projects/{project_root}/files/{project_name}"
-    sourceforge_soup = BeautifulSoup(
-            await hub.pkgtools.fetch.get_page(sourceforge_url), "lxml"
-            )
+	for link in links:
+		cls = link.get("class")
+		if cls and 'name' in cls:
+			try:
+				version = link.text
+				list(map(int, version.split(".")))
+				final_name = f"courier-authlib-{version}.tar.bz2"
+				break
 
-    files_list = sourceforge_soup.find(id="files_list")
-    files = (
-            version_row.get("title") for version_row in files_list.tbody.find_all("tr")
-            )
-    versions = { version.parse(re.search(r"\d+\.\d+(\.\d+)?", file).group()): file for file in files }
+			except ValueError:
+				continue
 
-    target_version = max(versions.keys())
-    target_file = versions[target_version]
+	if version:
+		url = f"https://sourceforge.net/projects/courier/files/authlib/{version}/{final_name}"
+		ebuild = hub.pkgtools.ebuild.BreezyBuild(
+			**pkginfo,
+			version=version,
+			artifacts=[hub.pkgtools.ebuild.Artifact(url=url, final_name=final_name)],
+		)
 
-    src_url = f"https://downloads.sourceforge.net/{project_root}/{project_name}/{project_root}-{project_name}-{target_file}.tar.bz2"
+		ebuild.push()
 
-    ebuild = hub.pkgtools.ebuild.BreezyBuild(
-            **pkginfo,
-            version=target_version,
-            artifacts=[hub.pkgtools.ebuild.Artifact(url=src_url)],
-            )
-    ebuild.push()
-
+# vim: ts=4 sw=4 noet

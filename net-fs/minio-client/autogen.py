@@ -3,8 +3,10 @@
 from packaging import version
 
 def get_release(release_data):
-	releases = list(filter(lambda x: x["prerelease"] is False and x["draft"] is False, release_data))
-	return None if not releases else sorted(releases, key=lambda x: version.parse(x["tag_name"])).pop()
+	for rel in release_data:
+		version = rel.get("tag_name").lstrip("RELEASE.").replace("T", "-").rstrip("Z").replace("-", ".")
+		list(map(int, version.split(".")))
+		return rel
 
 async def generate(hub, **pkginfo):
 	user = "minio"

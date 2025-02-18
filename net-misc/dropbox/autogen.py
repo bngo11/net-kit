@@ -1,46 +1,38 @@
 #!/usr/bin/env python3
 
-from metatools.version import generic
 from bs4 import BeautifulSoup
-
-
-def get_release(releases_data):
-	matches = [x for x in releases_data if x.startswith("nautilus-dropbox")]
-	releases = sorted((x for x in matches if x), key=lambda x: generic.parse(x[0]))
-	return releases.pop() if releases else None
-
 
 async def generate(hub, **pkginfo):
 	urlamd64 = await hub.pkgtools.fetch.get_url_from_redirect("https://www.dropbox.com/download?plat=lnx.x86_64")
-	urlnaut = "https://linux.dropbox.com/packages/"
-	repo_data = await hub.pkgtools.fetch.get_page(urlnaut)
-	repo_soup = BeautifulSoup(repo_data, "html.parser")
-	links = []
-	for link in repo_soup.find_all("a", href=True):
-		links.append(link["href"])
-	latest_release = get_release(links)
-	if latest_release is None:
-		raise hub.pkgtools.ebuild.BreezyError(f"Can't find a suitable release")
-	naut_filename = latest_release
+	version = urlamd64.split("/")[-1].rsplit("-", 1)[-1].rstrip(".tar.gz")
+	html_data = await hub.pkgtools.fetch.get_page("https://linux.dropbox.com/packages/")
+	soup = BeautifulSoup(html_data, "html.parser")
+	links = soup.find_all("a")
+	links.reverse()
+
+	for link in links:
+		final_naut_name = link.get("href")
+		if final_naut_name and final_naut_name.endswith(".tar.bz2"):
+			naut_url = f"https://linux.dropbox.com/packages/{final_naut_name}"
+			break
+
 	github_repo = "dropbox-python-setup"
 	github_user = "funtoo"
 	github_tag = "1.1"
-	ebuild = hub.pkgtools.ebuild.BreezyBuild(
-		**pkginfo,
-		version=urlamd64.split("-")[-1].rstrip(".tar.gz"),
-		python_compat="python3+",
-		github_repo=github_repo,
-		github_user=github_user,
-		artifacts=[
-			hub.pkgtools.ebuild.Artifact(url=urlamd64),
-			hub.pkgtools.ebuild.Artifact(url=(urlnaut + naut_filename)),
-			hub.pkgtools.ebuild.Artifact(
-				url=f"https://www.github.com/{github_user}/{github_repo}/tarball/{github_tag}",
-				final_name=f"{github_repo}-{github_tag}.tar.gz",
-			),
-		],
-	)
-	ebuild.push()
+
+	if version:
+		ebuild = hub.pkgtools.ebuild.BreezyBuild(
+			**pkginfo,
+			version=version,
+			artifacts=[
+				hub.pkgtools.ebuild.Artifact(url=urlamd64, final_name=urlamd64.rsplit("/", 1)[-1]),
+				hub.pkgtools.ebuild.Artifact(url=naut_url, final_name=final_naut_name),
+				hub.pkgtools.ebuild.Artifact(
+					url = f"https://www.github.com/{github_user}/{github_repo}/tarball/{github_tag}",
+					final_name = f"{github_repo}-{github_tag}.tar.gz")]
+		)
+
+		ebuild.push()
 
 
 # vim: ts=4 sw=4 noet

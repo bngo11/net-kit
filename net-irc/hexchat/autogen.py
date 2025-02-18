@@ -1,32 +1,40 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import re
-from metatools.version import generic
+import json
 
 async def generate(hub, **pkginfo):
+	github_user = github_repo = pkginfo.get("name")
+	json_data = await hub.pkgtools.fetch.get_page(f"https://api.github.com/repos/{github_user}/{github_repo}/releases", is_json=True)
+	version = None
+	url = None
 
-	base_url = "https://dl.hexchat.net/hexchat/"
+	for item in json_data:
+		try:
+			if item["prerelease"] or item["draft"]:
+				continue
 
-	versions = await hub.pkgtools.pages.iter_links (
-		base_url = base_url,
-		match_fn = lambda x: re.match("hexchat-(\d+\.\d+\.\d+).tar.xz", x),
-		fixup_fn = lambda x: x.groups()[0]
-    )
+			version = item["tag_name"].lstrip("v")
+			list(map(int, version.split(".")))
 
-	versions.sort( key=lambda x: generic.parse(x), reverse=True )
-	version = versions[0]
-	hub.pkgtools.model.log.debug(f"Versions found: {versions}")
-	hub.pkgtools.model.log.debug(f"Latest: {version}")
+			for asset in item['assets']:
+				asset_name = asset["name"]
 
-	artifact = hub.pkgtools.ebuild.Artifact(
-		url=f'{base_url}/{pkginfo["name"]}-{version}.tar.xz'
-	)
+				if asset_name.endswith("tar.xz"):
+					url = asset["browser_download_url"]
+					break
 
-	ebuild = hub.pkgtools.ebuild.BreezyBuild(
-		**pkginfo,
-		version=version,
-		artifacts=[artifact]
-	)
-	ebuild.push()
+			if url:
+				break
+
+		except (KeyError, IndexError, ValueError):
+			continue
+
+	if version and url:
+		ebuild = hub.pkgtools.ebuild.BreezyBuild(
+			**pkginfo,
+			version=version,
+			artifacts=[hub.pkgtools.ebuild.Artifact(url=url, final_name=asset_name)]
+		)
+		ebuild.push()
 
 # vim: ts=4 sw=4 noet

@@ -3,7 +3,7 @@
 EAPI=7
 
 GNOME3_LA_PUNT="yes"
-PYTHON_COMPAT=( python3+ )
+PYTHON_COMPAT=(  )
 
 inherit autotools eutils gnome3-utils python-single-r1 gnome3
 
@@ -80,7 +80,7 @@ src_install () {
 	else
 		newins ${DISTDIR}/dropbox-lnx.x86-${PV}.tar.gz dropbox-dist.tar.gz
 	fi
-	newbin "${WORKDIR}"/funtoo-dropbox-python-setup-???????/dropbox.py dropbox || die
+	newbin "${WORKDIR}"/--???????/dropbox.py dropbox || die
 }
 
 pkg_postinst () {

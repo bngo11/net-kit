@@ -1,28 +1,42 @@
 #!/usr/bin/env python3
 
-from metatools.version import generic
-
-
-def get_release(releases_data):
-	releases = list(filter(lambda x: x["prerelease"] is False and x["draft"] is False, releases_data))
-	return None if not releases else sorted(releases, key=lambda x: generic.parse(x["tag_name"])).pop()
-
+import json
 
 async def generate(hub, **pkginfo):
-	user = "Foundry376"
-	repo = "Mailspring"
-	name = pkginfo["name"]
-	release_data = await hub.pkgtools.fetch.get_page(f"https://api.github.com/repos/{user}/{repo}/releases", is_json=True)
-	latest_release = get_release(release_data)
-	if latest_release is None:
-		raise hub.pkgtools.ebuild.BreezyError(f"Can't find a suitable release of {repo}")
-	version = latest_release["tag_name"].lstrip("v")
-	url = next(x["browser_download_url"] for x in latest_release["assets"] if x["name"].endswith("amd64.deb"))
-	final_name = f"{name}-{version}.deb"
-	src_artifact = hub.pkgtools.ebuild.Artifact(url=url, final_name=final_name)
-	ebuild = hub.pkgtools.ebuild.BreezyBuild(
-		**pkginfo,
-		version=version,
-		artifacts=[src_artifact],
-	)
-	ebuild.push()
+	github_user = "Foundry376"
+	github_repo = "Mailspring"
+	json_data = await hub.pkgtools.fetch.get_page(f"https://api.github.com/repos/{github_user}/{github_repo}/releases", is_json=True)
+	version = None
+	url = None
+
+	for item in json_data:
+		try:
+			if item["prerelease"] or item["draft"]:
+				continue
+
+			version = item["tag_name"]
+			list(map(int, version.split(".")))
+
+			for asset in item['assets']:
+				asset_name = asset["name"]
+
+				if asset_name.endswith("-amd64.deb"):
+					url = asset["browser_download_url"]
+					break
+
+			if url:
+				break
+
+		except (KeyError, IndexError, ValueError):
+			continue
+
+	if version and url:
+		final_name = f"{pkginfo.get('name')}-{version}.deb"
+		ebuild = hub.pkgtools.ebuild.BreezyBuild(
+			**pkginfo,
+			version=version,
+			artifacts=[hub.pkgtools.ebuild.Artifact(url=url, final_name=final_name)]
+		)
+		ebuild.push()
+
+# vim: ts=4 sw=4 noet

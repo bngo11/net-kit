@@ -1,44 +1,40 @@
 #!/usr/bin/env python3
 
-import os
-from metatools.version import generic
-
-
-def get_release(releases_data):
-	releases = list(filter(lambda x: x["prerelease"] is False and x["draft"] is False, releases_data))
-	return None if not releases else sorted(releases, key=lambda x: generic.parse(x["tag_name"])).pop()
-
+import json
 
 async def generate(hub, **pkginfo):
-	github_user = pkginfo["name"]
-	github_repo = pkginfo["name"]
+	github_user = github_repo = pkginfo.get("name")
+	json_data = await hub.pkgtools.fetch.get_page(f"https://api.github.com/repos/{github_user}/{github_repo}/releases", is_json=True)
+	version = None
+	url = None
 
-	json_list = await hub.pkgtools.fetch.get_page(
-		f"https://api.github.com/repos/{github_user}/{github_repo}/releases", is_json=True
-	)
-	latest_release = get_release(json_list)
-	if latest_release is None:
-		raise hub.pkgtools.ebuild.BreezyError(f"Can't find a suitable release of {github_repo}")
-	version = latest_release["tag_name"]
+	for item in json_data:
+		try:
+			if item["prerelease"] or item["draft"]:
+				continue
 
-	final_name = f'{pkginfo["name"]}-{version}-with-submodules.tar.xz'
+			version = item["tag_name"]
+			list(map(int, version.split(".")))
 
-	my_archive, metadata = hub.Archive.find_by_name(final_name)
-	if my_archive is None:
-		my_archive = hub.Archive(final_name)
-		await my_archive.initialize()
-		retval = os.system(f'( cd {my_archive.top_path}; git clone --depth 1 --branch {version} --recursive https://github.com/{github_user}/{github_repo}.git {pkginfo["name"]}-{version} )')
-		if retval != 0:
-			raise hub.pkgtools.ebuild.BreezyError("Unable to git clone repository.")
-		await my_archive.store_by_name()
+			for asset in item['assets']:
+				asset_name = asset["name"]
 
-	ebuild = hub.pkgtools.ebuild.BreezyBuild(
-		**pkginfo,
-		version=version,
-		github_user=github_user,
-		github_repo=github_repo,
-		artifacts=[my_archive]
-	)
-	ebuild.push()
+				if asset_name.endswith("tar.xz"):
+					url = asset["browser_download_url"]
+					break
+
+			if url:
+				break
+
+		except (KeyError, IndexError, ValueError):
+			continue
+
+	if version and url:
+		ebuild = hub.pkgtools.ebuild.BreezyBuild(
+			**pkginfo,
+			version=version,
+			artifacts=[hub.pkgtools.ebuild.Artifact(url=url, final_name=asset_name)]
+		)
+		ebuild.push()
 
 # vim: ts=4 sw=4 noet

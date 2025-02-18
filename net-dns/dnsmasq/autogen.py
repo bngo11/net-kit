@@ -1,54 +1,36 @@
 #!/usr/bin/env python3
 
-from metatools.version import generic
-from packaging import version
-import subprocess
-
-REPO_URL = "https://thekelleys.org.uk/git/dnsmasq.git"
-DOWNLOAD_URL = "http://www.thekelleys.org.uk/dnsmasq/"
-
-
-def get_latest_version(hub):
-
-	result = subprocess.run(["git", "ls-remote", "--tags", REPO_URL], capture_output=True, encoding="UTF-8")
-
-	if result.returncode > 0:
-		cmd = " ".join(result.args)
-		raise hub.pkgtools.ebuild.BreezyError(f"{cmd} failed: {result.stderr}")
-
-	tags = []
-	for ref in result.stdout.split("\n"):
-		bits = ref.split("\t")  # <hash><tab>refs/tags/<tag>
-		if len(bits) < 2:
-			continue
-
-		rtt = bits[1].split("/")  # refs/tags/<tag>
-		if len(rtt) < 3:
-			continue
-
-		if rtt[2].startswith("v") and not rtt[2].endswith("^{}"):
-			v = generic.parse(rtt[2])
-			if v.is_prerelease or isinstance(v, version.LegacyVersion):
-				continue
-			tags.append(v)
-
-	return None if not tags else sorted(tags).pop()
-
+from bs4 import BeautifulSoup
 
 async def generate(hub, **pkginfo):
+	base_url = f"https://thekelleys.org.uk/dnsmasq/"
+	html_data = await hub.pkgtools.fetch.get_page(f"{base_url}")
+	soup = BeautifulSoup(html_data, "html.parser")
+	links = soup.find_all("a")
+	links.reverse()
+	version = None
 
-	latest_version = get_latest_version(hub)
+	for link in links:
+		final_name = link.get("href")
+		if final_name and final_name.endswith(".tar.xz"):
+			version = final_name.rsplit("-", 1)[-1].rstrip(".tar.xz")
 
-	if latest_version is None:
-		raise hub.pkgtools.ebuild.BreezyError(f"Can't find a latest version of {pkginfo['cat']}/{pkginfo['name']}")
+			try:
+				list(map(int, version.split(".")))
+				break
 
-	url = f"{DOWNLOAD_URL}{pkginfo['name']}-{latest_version}.tar.xz"
-	ebuild = hub.pkgtools.ebuild.BreezyBuild(
-		**pkginfo,
-		version=latest_version,
-		artifacts=[hub.pkgtools.ebuild.Artifact(url=url)],
-	)
-	ebuild.push()
+			except ValueError:
+				continue
+
+	if version:
+		url = f"{base_url}{final_name}"
+		ebuild = hub.pkgtools.ebuild.BreezyBuild(
+			**pkginfo,
+			version=version,
+			artifacts=[hub.pkgtools.ebuild.Artifact(url=url, final_name=final_name)],
+		)
+
+		ebuild.push()
 
 
 # vim: ts=4 sw=4 noet
