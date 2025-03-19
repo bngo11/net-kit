@@ -30,6 +30,7 @@ REQUIRED_USE="
 KEYWORDS="*"
 
 COMMON_DEPEND="
+	dev-libs/jansson
 	sys-apps/util-linux
 	elogind? ( >=sys-auth/elogind-219 )
 	>=virtual/libudev-175:=
