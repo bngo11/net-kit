@@ -68,8 +68,8 @@ EGO_SUM=(
 	"github.com/godbus/dbus/v5 v5.0.4/go.mod"
 	"github.com/gogo/protobuf v1.3.2"
 	"github.com/gogo/protobuf v1.3.2/go.mod"
-	"github.com/golang-jwt/jwt/v4 v4.5.1"
-	"github.com/golang-jwt/jwt/v4 v4.5.1/go.mod"
+	"github.com/golang-jwt/jwt/v4 v4.5.2"
+	"github.com/golang-jwt/jwt/v4 v4.5.2/go.mod"
 	"github.com/golang/protobuf v1.2.0/go.mod"
 	"github.com/golang/protobuf v1.5.4"
 	"github.com/golang/protobuf v1.5.4/go.mod"
@@ -149,8 +149,8 @@ EGO_SUM=(
 	"github.com/minio/crc64nvme v1.0.1/go.mod"
 	"github.com/minio/filepath v1.0.0"
 	"github.com/minio/filepath v1.0.0/go.mod"
-	"github.com/minio/madmin-go/v3 v3.0.96"
-	"github.com/minio/madmin-go/v3 v3.0.96/go.mod"
+	"github.com/minio/madmin-go/v3 v3.0.102"
+	"github.com/minio/madmin-go/v3 v3.0.102/go.mod"
 	"github.com/minio/md5-simd v1.1.2"
 	"github.com/minio/md5-simd v1.1.2/go.mod"
 	"github.com/minio/minio-go/v7 v7.0.88"
@@ -358,8 +358,8 @@ EGO_SKIP_TIDY=1
 DESCRIPTION="Fast tool to manage MinIO clusters"
 HOMEPAGE="https://min.io/ https://github.com/minio/mc"
 SRC_URI="
-https://api.github.com/repos/minio/mc/tarball/RELEASE.2025-03-12T17-29-24Z -> minio-client-RELEASE.2025-03-12T17-29-24Z.tar.gz
-https://direct.funtoo.org/3b/8d/2c/3b8d2c99c47163d77c75bc5c661d659f22ef69b2a17b065371dbbdc8538762307db942d17d98c3f15f78dc33b4c52b870556144bca64c7c0aff31ab2403c85b6 -> minio-client-2025.03.12.17.29.24-funtoo-go-bundle-e1f4effbbf3fdcea888295bef9f785e6238293c2114e4820edb65bc076c165303fb388609801c653574e5f9530106bb455a301b22b7a48748b55e68ade2e395b.tar.gz"
+https://api.github.com/repos/minio/mc/tarball/RELEASE.2025-04-03T17-07-56Z -> minio-client-RELEASE.2025-04-03T17-07-56Z.tar.gz
+https://direct.funtoo.org/64/09/d0/6409d08c0879871f1546bb86de94c9f96c221aef1f6632e1efa836862f9972f57f8548d59cdbeb5ad064e5d6de83719a264d8e13ba5b0fb35029e1ddf68a0e14 -> minio-client-2025.04.03.17.07.56-funtoo-go-bundle-3ee0dbaacf242ac6d7d89f4739f337b1cdd075aa20ce255a046cbb23ee547827a2e37ebcefb1f4fe61c031c3a5a6a8b2f2077bfa2019104d09e74c2ec980d2b5.tar.gz"
 
 MY_PV="$(ver_cut 1-3)T$(ver_cut 4-7)Z"
 MY_PV=${MY_PV//./-}
