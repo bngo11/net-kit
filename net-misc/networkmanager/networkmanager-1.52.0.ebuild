@@ -112,6 +112,8 @@ BDEPEND="
 
 S="${WORKDIR}/NetworkManager-${PV}"
 
+PATCHES=( "${FILESDIR}/networkmanager-1.52-girepo.patch" )
+
 python_check_deps() {
 	if use introspection; then
 		has_version -b "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return
