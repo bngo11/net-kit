@@ -7,7 +7,7 @@ inherit linux-info bash-completion-r1 systemd toolchain-funcs
 DESCRIPTION="Required tools for WireGuard, such as wg(8) and wg-quick(8)"
 HOMEPAGE="https://www.wireguard.com/"
 
-SRC_URI="https://github.com/WireGuard/wireguard-tools/tarball/3ba6527130c502144e7388b900138bca6260f4e8 -> wireguard-tools-1.0.20210914-3ba6527.tar.gz"
+SRC_URI="https://github.com/WireGuard/wireguard-tools/tarball/e2ecaaa739144997ccff89d6ad6ec81698ea6ced -> wireguard-tools-1.0.20250521-e2ecaaa.tar.gz"
 
 KEYWORDS="*"
 

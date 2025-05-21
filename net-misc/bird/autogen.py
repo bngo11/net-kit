@@ -1,11 +1,22 @@
 #!/usr/bin/env python3
 
 import re
+from bs4 import BeautifulSoup
 
 # We have seen a new "3.0-alpha0" tag -- so this may be changing:
 v_pattern="^v([0-9.]+)$"
 
 async def generate(hub, **pkginfo):
+	dwnld = await hub.pkgtools.fetch.get_page("https://bird.network.cz/download/")
+	soup = BeautifulSoup(dwnld, "html.parser")
+	links = soup.find_all("a")
+	latest_versions = []
+	for link in links:
+		href = link.get("href")
+		if 'LATEST' in href:
+			parts = href.rsplit("-", 1)
+			latest_versions.append(parts[-1])
+
 	project_id = "6"
 	tags_data = await hub.pkgtools.fetch.get_page(
 		f"https://gitlab.nic.cz/api/v4/projects/{project_id}/repository/tags", is_json=True
@@ -15,6 +26,10 @@ async def generate(hub, **pkginfo):
 		if not match:
 			continue
 		version = match.groups()[0]
+		while version not in latest_versions:
+			ver = list(map(int, version.split(".")))
+			ver[-1] -= 1
+			version = ".".join(map(str, ver))
 		break
 	ebuild = hub.pkgtools.ebuild.BreezyBuild(
 		**pkginfo,
