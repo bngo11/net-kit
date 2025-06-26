@@ -1,48 +1,45 @@
-# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools libtool readme.gentoo-r1 systemd
+EAPI=7
+inherit autotools readme.gentoo-r1 systemd
 
 DESCRIPTION="An IMAP daemon designed specifically for maildirs"
 HOMEPAGE="https://www.courier-mta.org/imap/"
-SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
+SRC_URI="https://sourceforge.net/projects/courier/files/imap/${PV}/${P}.tar.bz2/download
+	-> ${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="*"
 
-IUSE="berkdb debug fam +gdbm gnutls ipv6 libressl selinux trashquota"
+IUSE="berkdb debug +gdbm gnutls ipv6 selinux trashquota"
 REQUIRED_USE="|| ( berkdb gdbm )"
 
 CDEPEND="
-	gnutls? ( net-libs/gnutls )
+	gnutls? ( net-libs/gnutls:=[tools] )
 	!gnutls? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
-	>=net-libs/courier-authlib-0.66.4
-	>=net-libs/courier-unicode-2
-	>=net-mail/mailbase-0.00-r8
+	net-libs/courier-authlib
+	net-libs/courier-unicode
+	net-mail/mailbase
+	net-dns/libidn:=
 	berkdb? ( sys-libs/db:= )
-	fam? ( virtual/fam )
-	gdbm? ( >=sys-libs/gdbm-1.8.0 )
+	gdbm? ( sys-libs/gdbm:= )
+	!mail-mta/courier
 "
 DEPEND="${CDEPEND}
 	dev-lang/perl
-	!mail-mta/courier
-	userland_GNU? ( sys-process/procps )
+	sys-process/procps
+	net-mail/courier-common
 "
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-courier )
 "
 
-# get rid of old style virtual - bug 350792
 RDEPEND="${RDEPEND}
-	!mail-mta/courier
-	!net-mail/bincimap
 	!net-mail/cyrus-imapd
-	!net-mail/uw-imap
+	!net-mail/courier-makedat
 "
 
 RC_VER="4.0.6-r1"
@@ -59,23 +56,18 @@ and remove TLS_DHPARAMS from configuration files or run mkdhparams
 
 For a quick-start howto please refer to
 ${PN}-gentoo.readme in /usr/share/doc/${PF}
+
+Please convert maildir to utf8
+and rerun mkdhparams if needed. Location has changed
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.17-disable-fam-configure.ac.patch"
-	"${FILESDIR}/${PN}-4.17-aclocal-fix.patch"
+	"${FILESDIR}/${PN}-5.1.8-aclocal-fix.patch"
+	"${FILESDIR}/${PN}-5.0.8-ar-fix.patch"
 )
 
 src_prepare() {
 	default
-
-	# These patches should fix problems detecting BerkeleyDB.
-	# We now can compile with db4 support.
-	if use berkdb ; then
-		eapply "${FILESDIR}/${PN}-4.17-db4-bdbobj_configure.ac.patch"
-		eapply "${FILESDIR}/${PN}-4.17-db4-configure.ac.patch"
-	fi
-
 	eautoreconf
 }
 
@@ -96,37 +88,21 @@ src_configure() {
 		myconf="${myconf} --with-trashquota"
 	fi
 
-	use debug && myconf="${myconf} debug=true"
-
 	econf \
+		--with-notice=unicode \
 		--disable-root-check \
 		--bindir=/usr/sbin \
 		--sysconfdir="/etc/${PN}" \
 		--libexecdir="/usr/$(get_libdir)/${PN}" \
 		--localstatedir="/var/lib/${PN}" \
-		--with-authdaemonvar="/var/lib/${PN}/authdaemon" \
 		--enable-workarounds-for-imap-client-bugs \
 		--with-mailuser=mail \
 		--with-mailgroup=mail \
-		$(use_with fam) \
+		--with-certsdir="/etc/courier-imap" \
 		$(use_with ipv6) \
 		$(use_with gnutls) \
 		${myconf}
-
-	# Change the pem file location.
-	sed -i -e "s:^\(TLS_CERTFILE=\).*:\1/etc/courier-imap/imapd.pem:" \
-		libs/imap/imapd-ssl.dist || \
-		die "sed failed"
-
-	sed -i -e "s:^\(TLS_CERTFILE=\).*:\1/etc/courier-imap/pop3d.pem:" \
-		libs/imap/pop3d-ssl.dist || \
-		die "sed failed"
 }
-
-#src_compile() {
-	# spurious failures with parallel compiles, bug #????
-#	emake -j1
-#}
 
 src_install() {
 	dodir "/var/lib/${PN}" /etc/pam.d
@@ -140,6 +116,13 @@ src_install() {
 		mv "${D}/usr/sbin/"{,courier-}${name} \
 			|| die "failed to rename ${name} to courier-${name}"
 	done
+
+	#  Moved to courier-common
+	rm "${D}"/usr/sbin/deliverquota || die
+	rm "${D}"/usr/sbin/maildirkw || die
+	rm "${D}"/usr/sbin/makedat || die
+	rm "${D}"/usr/share/man/man1/maildirkw.1 || die
+	rm "${D}"/usr/share/man/man8/deliverquota.8 || die
 
 	# Hack /usr/lib/courier-imap/foo.rc to use ${MAILDIR} instead of
 	# 'Maildir', and to use /usr/sbin/courier-foo names.
@@ -187,7 +170,7 @@ src_install() {
 
 	dosbin "${FILESDIR}/mkimapdcert" "${FILESDIR}/mkpop3dcert"
 
-	dosym /usr/sbin/courierlogger "/usr/$(get_libdir)/${PN}/courierlogger"
+	dosym ../../sbin/courierlogger "/usr/$(get_libdir)/${PN}/courierlogger"
 
 	for initd in courier-{imapd,pop3d}{,-ssl} ; do
 		sed -e "s:GENTOO_LIBDIR:$(get_libdir):g" \
@@ -197,11 +180,18 @@ src_install() {
 		doinitd "${T}/${initd}"
 	done
 
-	systemd_newunit "${FILESDIR}"/courier-authdaemond-r1.service \
+	cp "${FILESDIR}"/courier-*-r1.service .
+
+	sed -i \
+		-e "s:/usr/lib/:/usr/$(get_libdir)/:" \
+		courier-*-r1.service \
+		|| die
+
+	systemd_newunit courier-authdaemond-r1.service \
 					courier-authdaemond.service
-	systemd_newunit "${FILESDIR}"/courier-imapd-ssl-r1.service \
+	systemd_newunit courier-imapd-ssl-r1.service \
 					courier-imapd-ssl.service
-	systemd_newunit "${FILESDIR}"/courier-imapd-r1.service \
+	systemd_newunit courier-imapd-r1.service \
 					courier-imapd.service
 
 	exeinto "/usr/$(get_libdir)/${PN}"
@@ -219,6 +209,8 @@ src_install() {
 	mv "${D}/usr/share/man/man1/"{,courier-}maildirmake.1 \
 		|| die "failed to rename maildirmake.1 to courier-maildirmake.1"
 
+	rm -rf "${D}"/usr/sbin/doc
+
 	dodoc AUTHORS INSTALL NEWS README ChangeLog
 	readme.gentoo_create_doc
 	dodoc "${FILESDIR}/${PN}-gentoo.readme"
@@ -230,12 +222,21 @@ src_install() {
 	dodoc libs/rfc2045/*.html
 	docinto tcpd
 	dodoc libs/tcpd/README* libs/tcpd/*.html
+	exeinto /etc/cron.monthly
+	newexe "${FILESDIR}"/${PN}.cron ${PN}
 }
 
 pkg_postinst() {
 	# Some users have been reporting that permissions on this directory were
 	# getting scrambled, so let's ensure that they are sane.
-	fperms 0755 "${ROOT}/usr/$(get_libdir)/${PN}"
+	chmod 0755 "${ROOT}/usr/$(get_libdir)/${PN}"
 
 	readme.gentoo_print_elog
+
+	elog ""
+	elog "Courier Imap now run as user mail:mail."
+	elog ""
+	elog "This require you to enable read/write access to the caches:"
+	elog "/var/lib/courier-imap/courierssl*cache (chown mail:mail)"
+	elog "and read access to the certificates (e.g. /etc/courier-imap/pop3d.pem )"
 }
