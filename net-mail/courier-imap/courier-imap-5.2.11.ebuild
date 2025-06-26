@@ -31,7 +31,6 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	dev-lang/perl
 	sys-process/procps
-	net-mail/courier-common
 "
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-courier )
@@ -116,13 +115,6 @@ src_install() {
 		mv "${D}/usr/sbin/"{,courier-}${name} \
 			|| die "failed to rename ${name} to courier-${name}"
 	done
-
-	#  Moved to courier-common
-	rm "${D}"/usr/sbin/deliverquota || die
-	rm "${D}"/usr/sbin/maildirkw || die
-	rm "${D}"/usr/sbin/makedat || die
-	rm "${D}"/usr/share/man/man1/maildirkw.1 || die
-	rm "${D}"/usr/share/man/man8/deliverquota.8 || die
 
 	# Hack /usr/lib/courier-imap/foo.rc to use ${MAILDIR} instead of
 	# 'Maildir', and to use /usr/sbin/courier-foo names.
