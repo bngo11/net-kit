@@ -53,6 +53,8 @@ EGO_SUM=(
 	"github.com/chzyer/logex v1.1.10/go.mod"
 	"github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e/go.mod"
 	"github.com/chzyer/test v0.0.0-20180213035817-a1ea475d72b1/go.mod"
+	"github.com/coreos/go-semver v0.3.1"
+	"github.com/coreos/go-semver v0.3.1/go.mod"
 	"github.com/cpuguy83/go-md2man/v2 v2.0.5"
 	"github.com/cpuguy83/go-md2man/v2 v2.0.5/go.mod"
 	"github.com/d4l3k/messagediff v1.2.1"
@@ -372,14 +374,14 @@ go-module_set_globals
 
 DESCRIPTION="Open Source Continuous File Synchronization"
 HOMEPAGE="https://github.com/syncthing/syncthing"
-SRC_URI="https://github.com/syncthing/syncthing/tarball/df179084956301861bd994f0e6a098e76a4ba275 -> syncthing-1.29.7-df17908.tar.gz
-https://direct.funtoo.org/8c/c1/9b/8cc19bdabb8aab11e27edc847047f99f23a648ce6c3ef997b5d6214200fc313c476a16dd5f00c29497f5eafbf7701fd8fcce6f870c0c80154ce510d876f068d5 -> syncthing-1.29.7-funtoo-go-bundle-138979d6b1f6d49d50a1a469c22ce24a5902ad64c13d00c8da6b3d7abda57cbdb0cfd00ea677b1ad7cf403d57400aa6c57f086040e886448f2d372fc0998b78c.tar.gz"
+SRC_URI="https://github.com/syncthing/syncthing/tarball/bb86be470ba49b40689f3b04465ad41c53d096c8 -> syncthing-1.30.0-bb86be4.tar.gz
+https://direct.funtoo.org/84/51/3d/84513d71399a006f94d2dfdee6ba803ce6eb1df95919523d60c2561ab4d8442d74aa425efd33b4005c9056c5dc85d86463132b165b047beb512e7aa04126ee7e -> syncthing-1.30.0-funtoo-go-bundle-c72384a552892a975e4b14575af9806e1459e0e3fc64595bf0903b629bf00c006d720345bafb4d90d443e68131aac742211a26c229e2b99b0ac18f11effd09a5.tar.gz"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0 Unlicense"
 SLOT="0"
 KEYWORDS="*"
 IUSE="tools"
-S="${WORKDIR}/syncthing-syncthing-df17908"
+S="${WORKDIR}/syncthing-syncthing-bb86be4"
 
 DEPEND=">=dev-lang/go-1.17"
 
