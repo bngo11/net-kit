@@ -6,7 +6,7 @@ inherit bash-completion-r1 systemd
 
 DESCRIPTION="Tools for configuring Amnezia-WG "
 HOMEPAGE="https://github.com/amnezia-vpn/amneziawg-tools"
-SRC_URI="https://github.com/amnezia-vpn/amneziawg-tools/tarball/c0b400c6dfc046f5cae8f3051b14cb61686fcf55 -> amneziawg-tools-1.0.20241018-c0b400c.tar.gz"
+SRC_URI="https://github.com/amnezia-vpn/amneziawg-tools/tarball/4c12402c1f91fde73b8ad98c647e625267c83cc6 -> amneziawg-tools-1.0.20250704-4c12402.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
