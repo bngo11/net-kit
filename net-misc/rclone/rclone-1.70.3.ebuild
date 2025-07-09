@@ -1088,8 +1088,8 @@ EGO_SUM=(
 go-module_set_globals
 
 KEYWORDS="*"
-SRC_URI="https://github.com/rclone/rclone/tarball/21342f10c5ce1496f21356a6e05d56e370ef9492 -> rclone-1.70.2-21342f1.tar.gz
-https://direct.funtoo.org/f2/97/da/f297da3bb3d5eaaafd34b3342fd29ef958ecfb8a287dbcf270709c3b948faeca417f9b35207b31a528ee4b765b362605fa7cbb9d3088ba5bbfa9f8ef13fc2f67 -> rclone-1.70.2-funtoo-go-bundle-36adaa082a8e462fc75c0d5f29fe989d7ff387c2dc7a10311cb876bac098d0c8c8e49760f7aa797c4be2b16d13ea936867a336252544ca8e2c626a40100d94cf.tar.gz"
+SRC_URI="https://github.com/rclone/rclone/tarball/17d6a707b3cdf4b6eb7d098de06ccbbf0ce02fe5 -> rclone-1.70.3-17d6a70.tar.gz
+https://direct.funtoo.org/90/59/cc/9059ccc9d36d4d5e81568ce698379011bad0440ab0a23d412f7c8e84b5480755b697b0bf31f5aef4710a3a9d88a3369c4970a134a20d931c3c9974f5d2277629 -> rclone-1.70.3-funtoo-go-bundle-36adaa082a8e462fc75c0d5f29fe989d7ff387c2dc7a10311cb876bac098d0c8c8e49760f7aa797c4be2b16d13ea936867a336252544ca8e2c626a40100d94cf.tar.gz"
 
 DESCRIPTION="A program to sync files to and from various cloud storage providers"
 HOMEPAGE="https://rclone.org/"
