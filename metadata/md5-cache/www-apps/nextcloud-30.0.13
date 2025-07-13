@@ -8,7 +8,7 @@ KEYWORDS=*
 LICENSE=AGPL-3
 RDEPEND=dev-lang/php[curl?,filter,gd,hash(+),intl,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,truetype,xmlreader,xmlwriter,zip] imagemagick? ( dev-php/pecl-imagick ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysql postgres sqlite )
-SLOT=31.0.6
-SRC_URI=https://download.nextcloud.com/server/releases/nextcloud-31.0.6.tar.bz2 -> nextcloud-31.0.6.tar.bz2
+SLOT=30.0.13
+SRC_URI=https://download.nextcloud.com/server/releases/nextcloud-30.0.13.tar.bz2 -> nextcloud-30.0.13.tar.bz2
 _eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
-_md5_=bd22f6ff9fb49f66bf6593fc3407d6f3
+_md5_=c1e3e12ade7d9861677e4baf3df53cca
