@@ -428,8 +428,8 @@ EGO_SUM=(
 	"github.com/minio/cli v1.24.2/go.mod"
 	"github.com/minio/colorjson v1.0.8"
 	"github.com/minio/colorjson v1.0.8/go.mod"
-	"github.com/minio/console v1.7.7-0.20250516212319-220a55500cc3"
-	"github.com/minio/console v1.7.7-0.20250516212319-220a55500cc3/go.mod"
+	"github.com/minio/console v1.7.7-0.20250623221437-2595faf715ea"
+	"github.com/minio/console v1.7.7-0.20250623221437-2595faf715ea/go.mod"
 	"github.com/minio/crc64nvme v1.0.1"
 	"github.com/minio/crc64nvme v1.0.1/go.mod"
 	"github.com/minio/csvparser v1.0.0"
@@ -893,8 +893,8 @@ EGO_SKIP_TIDY=1
 DESCRIPTION="An Amazon S3 compatible object storage server"
 HOMEPAGE="https://min.io/ https://github.com/minio/minio"
 SRC_URI="
-https://api.github.com/repos/minio/minio/tarball/RELEASE.2025-06-13T11-33-47Z -> minio-RELEASE.2025-06-13T11-33-47Z.tar.gz
-https://direct.funtoo.org/87/e4/76/87e476f15c1af4e7f7e64fb3c20f9741a820412b7e9dc200b4aff434cce18257d5c028a163879d6bb3b51250d081dccdf5ac4b4344eda503e6a9dd3418577ad5 -> minio-2025.06.13.11.33.47-funtoo-go-bundle-dd18d4bcb6273039cb83ab623a5f87aa808c68ff53160f60e0f3b48b60c437717c6675fc0a9c0d69ca121ea01a536b8bc1d1cbfc2bdb92e589c317d84c737d2e.tar.gz"
+https://api.github.com/repos/minio/minio/tarball/RELEASE.2025-07-18T21-56-31Z -> minio-RELEASE.2025-07-18T21-56-31Z.tar.gz
+https://direct.funtoo.org/23/3a/7f/233a7f70427a8062dc02aabc7b578f5e5fea05d36fce568f74aa063e789508b6798033a35da94eafdfa2c28f81f3adaaf7ffa5a8fa66b6eb51f250155925562a -> minio-2025.07.18.21.56.31-funtoo-go-bundle-7ca8073fa3bc514940df4627773b6c4528ad5fe9bbc81a01494c4cbdefc397310b3295c5ee653fb9ad19c74e4222564ef18e8caddc5a8af7c2d6617a56fe8444.tar.gz"
 
 MY_PV="$(ver_cut 1-3)T$(ver_cut 4-7)Z"
 MY_PV=${MY_PV//./-}
