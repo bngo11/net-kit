@@ -112,7 +112,7 @@ BDEPEND="
 
 S="${WORKDIR}/NetworkManager-${PV}"
 
-PATCHES=( "${FILESDIR}/networkmanager-1.52-girepo.patch" )
+PATCHES=()
 
 python_check_deps() {
 	if use introspection; then
