@@ -10,6 +10,6 @@ LICENSE=GPL-2
 RDEPEND=caps? ( sys-libs/libcap ) libtomcrypt? ( dev-libs/libtomcrypt:= ) nettle? ( dev-libs/nettle:= ) nss? ( dev-libs/nss:= ) nts? ( net-libs/gnutls:= ) pps? ( net-misc/pps-tools ) readline? ( dev-libs/libedit ) seccomp? ( sys-libs/libseccomp ) selinux? ( sec-policy/selinux-chronyd ) virtual/tmpfiles
 REQUIRED_USE=html? ( doc ) sechash? ( || ( nettle nss libtomcrypt ) ) nettle? ( !nss ) nss? ( !nettle ) libtomcrypt? ( !nettle !nss ) !sechash? ( !nss ) !sechash? ( !nts? ( !nettle ) )
 SLOT=0
-SRC_URI=https://github.com/mlichvar/chrony/tarball/1bcbea9bd2601fd25ea3dff311f7f258bce76f95 -> chrony-4.7-1bcbea9.tar.gz
+SRC_URI=https://github.com/mlichvar/chrony/tarball/e9848c017617f1e8a4ecb218c3784e8dca786f4e -> chrony-4.8-e9848c0.tar.gz
 _eclasses_=edo	c0eb9cbe6b0bd01fcb4918f12598a4d3	multilib	d410501a125f99ffb560b0c523cd3d1e	tmpfiles	6f14f7c8fb6f63585daa89581247c82c	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	875055ddd565382c728563992ae3abf7
-_md5_=411622c49549cc3d849a008908687d9c
+_md5_=43093be3fa559ba8aa13c40de7cc5cc3

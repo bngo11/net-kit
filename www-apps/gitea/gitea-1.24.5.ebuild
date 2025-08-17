@@ -7,8 +7,8 @@ inherit fcaps go-module tmpfiles systemd flag-o-matic user
 DESCRIPTION="A painless self-hosted Git service"
 HOMEPAGE="https://gitea.com https://github.com/go-gitea/gitea"
 
-SRC_URI="https://github.com/go-gitea/gitea/releases/download/v1.24.4/gitea-src-1.24.4.tar.gz -> gitea-src-1.24.4.tar.gz
-https://direct.funtoo.org/f8/32/bd/f832bd31e2c621abdba8ad46c897cb15a8517d06717d6f1dcdd133160eb443edc7d87fb42957100e3e1530c78a7fe5a7776d6bc5a69316880b771e47eb35e4a5 -> gitea-1.24.4-funtoo-go-bundle-c0cf38ad2bda365d21776bfc31236ecee3fcd8c8b2947974dee6adf1d171639f274ca5c05379300e69128ae4efd2b76d2629cf109a795972dbbf3b2582117e63.tar.gz"
+SRC_URI="https://github.com/go-gitea/gitea/releases/download/v1.24.5/gitea-src-1.24.5.tar.gz -> gitea-src-1.24.5.tar.gz
+https://direct.funtoo.org/3f/8c/64/3f8c64cf2852a90a9ac9d95528155fe92abff85a64e658156abe73e97f61f387cbadf11711580a2b8c56be91df6ceb845a83d04bc82a27c54f0df927c34a6bde -> gitea-1.24.5-funtoo-go-bundle-c0cf38ad2bda365d21776bfc31236ecee3fcd8c8b2947974dee6adf1d171639f274ca5c05379300e69128ae4efd2b76d2629cf109a795972dbbf3b2582117e63.tar.gz"
 KEYWORDS="*"
 IUSE="systemd"
 
