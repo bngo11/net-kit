@@ -13,7 +13,7 @@ async def generate(hub, **pkginfo):
 	)
 
 	version = releases[-1]
-	if pkginfo['name'] == 'dnsdist':
+	if pkginfo['name'] in ['dnsdist', 'pdns-recursor']:
 		url = f"{base_url}{pkginfo['name']}-{version}.tar.xz"
 	else:
 		url = f"{base_url}{pkginfo['name']}-{version}.tar.bz2"
