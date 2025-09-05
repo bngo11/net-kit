@@ -9,7 +9,7 @@ inherit distutils-r1 xdg
 
 DESCRIPTION="A free, open-source tool for programming your radio."
 HOMEPAGE="https://chirp.danplanet.com/ http://github.com/kk7ds/chirp"
-SRC_URI="https://archive.chirpmyradio.com/chirp_next/next-20250829/chirp-20250829.tar.gz -> chirp-20250829.tar.gz"
+SRC_URI="https://archive.chirpmyradio.com/chirp_next/next-20250905/chirp-20250905.tar.gz -> chirp-20250905.tar.gz"
 
 RESTRICT="test"
 
