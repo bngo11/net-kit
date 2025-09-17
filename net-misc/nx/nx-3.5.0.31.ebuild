@@ -6,7 +6,7 @@ inherit autotools toolchain-funcs
 DESCRIPTION="NX compression technology core libraries"
 HOMEPAGE="https://github.com/ArcticaProject/nx-libs"
 
-SRC_URI="https://github.com/ArcticaProject/nx-libs/archive/3.5.99.27.tar.gz -> nx-3.5.99.27.tar.gz"
+SRC_URI="https://api.github.com/repos/ArcticaProject/nx-libs/tarball/refs/tags/redist-server/3.5.0.31 -> nx-3.5.0.31.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -106,7 +106,7 @@ src_compile() {
 
 	mkdir -p nx-X11/exports/lib/ || die
 	local nxlib
-	for nxlib in libNX_X11.so{,.6,.6.3.0} ; do
+	for nxlib in libNX_X11.so{} ; do
 		ln -s ../../lib/src/.libs/${nxlib} nx-X11/exports/lib/${nxlib} || die
 	done
 

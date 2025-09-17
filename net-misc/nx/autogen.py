@@ -6,22 +6,23 @@ import re
 
 
 def get_release(release_data):
-	release_data.reverse()
 	for rel in release_data:
-		version = rel.get("ref").split("/")[-1]
-		list(map(int, version.split(".")))
-		return rel
+		try:
+			version = rel.get("name").split("/")[-1]
+			list(map(int, version.split(".")))
+			url = rel.get("tarball_url")
+			return version, url
+		except:
+			continue
 
 async def generate(hub, **pkginfo):
 	user = "ArcticaProject"
 	repo = "nx-libs"
 	name = pkginfo["name"]
 	tags_data = await hub.pkgtools.fetch.get_page(
-		f"https://api.github.com/repos/{user}/{repo}/git/refs/tags", is_json=True
+		f"https://api.github.com/repos/{user}/{repo}/tags", is_json=True
 	)
-	target_tag = get_release(tags_data)
-	version = target_tag["ref"].lstrip("ref/tags")
-	url = f"https://github.com/{user}/{repo}/archive/{version}.tar.gz"
+	version, url = get_release(tags_data)
 	final_name = f"{name}-{version}.tar.gz"
 	src_artifact = hub.pkgtools.ebuild.Artifact(url=url, final_name=final_name)
 	await src_artifact.fetch()
