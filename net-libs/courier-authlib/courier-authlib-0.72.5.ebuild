@@ -6,7 +6,7 @@ inherit flag-o-matic
 KEYWORDS="*"
 
 DESCRIPTION="Courier authentication library"
-SRC_URI="https://sourceforge.net/projects/courier/files/authlib/0.72.4/courier-authlib-0.72.4.tar.bz2 -> courier-authlib-0.72.4.tar.bz2"
+SRC_URI="https://sourceforge.net/projects/courier/files/authlib/0.72.5/courier-authlib-0.72.5.tar.bz2 -> courier-authlib-0.72.5.tar.bz2"
 HOMEPAGE="https://www.courier-mta.org/authlib/"
 LICENSE="GPL-3"
 SLOT="0"
