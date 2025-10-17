@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Unicode library used by the courier mail server
+EAPI=7
+HOMEPAGE=https://www.courier-mta.org/
+KEYWORDS=*
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://sourceforge.net/projects/courier/files/courier-unicode/2.4.0/courier-unicode-2.4.0.tar.bz2 -> courier-unicode-2.4.0.tar.bz2
+_md5_=1b89f7f5693d05a63f685f12df54cb63
