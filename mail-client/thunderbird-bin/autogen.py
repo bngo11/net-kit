@@ -10,7 +10,7 @@ async def get_lang_artifacts(hub, version):
 	)
 	lang_codes = []
 	artifacts = []
-	for lang_path in re.findall(f'/pub/thunderbird/releases/{version}/linux-x86_64/xpi/[^"]*\.xpi', lang_page):
+	for lang_path in re.findall(fr'/pub/thunderbird/releases/{version}/linux-x86_64/xpi/[^"]*\.xpi', lang_page):
 		lang_code = lang_path.split("/")[-1].split(".")[0]
 		lang_codes.append(lang_code)
 		artifacts.append(
@@ -44,7 +44,7 @@ async def generate(hub, **pkginfo):
 		**pkginfo,
 		version=version,
 		lang_codes=" ".join(sorted(lang_data["lang_codes"])),
-		artifacts=[get_artifact(hub, version, "amd64"), get_artifact(hub, version, "x86"), *lang_data["artifacts"]],
+		artifacts=[get_artifact(hub, version, "amd64"), *lang_data["artifacts"]],
 	)
 	ebuild.push()
 
