@@ -86,7 +86,7 @@ BDEPEND="
 	) )
 "
 
-PATCHES=( "${FILESDIR}/freerdp-3.17.2-properly-set-requires-fields.patch" )
+PATCHES=( )
 
 src_configure() {
 	export CMAKE_BUILD_TYPE=Release
