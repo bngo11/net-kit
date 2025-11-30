@@ -125,8 +125,6 @@ src_install() {
 	fi
 	if use ldap ; then
 		DOCS+=( README.ldap )
-		dodir /etc/openldap/schema
-		cp -f authldap.schema "${D}/etc/openldap/schema/" || die
 	fi
 	if use sqlite ; then
 		HTML_DOCS+=( README.authsqlite.html README.authmysql.html )
