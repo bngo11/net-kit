@@ -4,7 +4,7 @@ EAPI=7
 
 inherit cmake
 
-SRC_URI="https://github.com/FreeRDP/FreeRDP/releases/download/3.18.0/freerdp-3.18.0.tar.gz -> freerdp-3.18.0.tar.gz"
+SRC_URI="https://github.com/FreeRDP/FreeRDP/releases/download/3.19.0/freerdp-3.19.0.tar.gz -> freerdp-3.19.0.tar.gz"
 KEYWORDS="*"
 
 DESCRIPTION="FreeRDP is a free remote desktop protocol library and clients"
