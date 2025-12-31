@@ -6,7 +6,7 @@ inherit fcaps
 
 DESCRIPTION="A utility to ping multiple hosts at once"
 HOMEPAGE="https://fping.org/ https://github.com/schweikert/fping/"
-SRC_URI="https://github.com/schweikert/fping/tarball/8540d42646c44951c78b731a13d128407bf47735 -> fping-5.4-8540d42.tar.gz"
+SRC_URI="https://github.com/schweikert/fping/tarball/06f9481ef3cf79c2aa973718366fb13927777689 -> fping-5.5-06f9481.tar.gz"
 
 LICENSE="fping"
 SLOT="0"
