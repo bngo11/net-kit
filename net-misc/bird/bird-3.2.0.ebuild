@@ -4,12 +4,13 @@ EAPI=7
 
 DESCRIPTION="A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6"
 HOMEPAGE="http://bird.network.cz"
-SRC_URI="https://bird.network.cz/download/bird-3.1.2.tar.gz -> bird-3.1.2.tar.gz"
+SRC_URI="https://gitlab.nic.cz/labs/bird/-/archive/v3.2.0/bird-v3.2.0.tar.gz -> bird-3.2.0.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
 KEYWORDS="*"
 IUSE="+client debug"
+S="${WORKDIR}/${PN}-v${PV}"
 
 RDEPEND="client? ( sys-libs/ncurses )
 	client? ( sys-libs/readline )"
@@ -18,7 +19,7 @@ DEPEND="sys-devel/flex
 	sys-devel/m4"
 
 src_configure() {
-	econf \
+	autoconf \
 		--localstatedir="${EPREFIX}/var" \
 		$(use_enable client) \
 		$(use_enable debug)

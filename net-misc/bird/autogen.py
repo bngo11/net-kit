@@ -1,44 +1,36 @@
 #!/usr/bin/env python3
 
-import re
-from bs4 import BeautifulSoup
-
-# We have seen a new "3.0-alpha0" tag -- so this may be changing:
-v_pattern="^v([0-9.]+)$"
+import json
 
 async def generate(hub, **pkginfo):
-	dwnld = await hub.pkgtools.fetch.get_page("https://bird.network.cz/download/")
-	soup = BeautifulSoup(dwnld, "html.parser")
-	links = soup.find_all("a")
-	latest_versions = []
-	for link in links:
-		href = link.get("href")
-		if 'LATEST' in href:
-			parts = href.rsplit("-", 1)
-			latest_versions.append(parts[-1])
+	gitlabid = "6"
+	gitlaburl = "gitlab.nic.cz"
+	json_data = await hub.pkgtools.fetch.get_page(f"https://{gitlaburl}/api/v4/projects/{gitlabid}/repository/tags", is_json=True)
+	version = None
+	url = None
+	basever = "3"
 
-	project_id = "6"
-	tags_data = await hub.pkgtools.fetch.get_page(
-		f"https://gitlab.nic.cz/api/v4/projects/{project_id}/repository/tags", is_json=True
-	)
-	for tag in tags_data:
-		match = re.match(v_pattern, tag["name"])
-		if not match:
+	for item in json_data:
+		try:
+			version = item['name'].lstrip('v').split(' ')[-1]
+			verlist = version.split(".")
+			list(map(int, verlist))
+			if verlist[0] != basever:
+				continue
+			break
+
+		except (IndexError, ValueError, KeyError):
 			continue
-		version = match.groups()[0]
-		while version not in latest_versions:
-			ver = list(map(int, version.split(".")))
-			ver[-1] -= 1
-			version = ".".join(map(str, ver))
-		break
-	ebuild = hub.pkgtools.ebuild.BreezyBuild(
-		**pkginfo,
-		version=version,
-		artifacts=[
-			hub.pkgtools.ebuild.Artifact(
-				url=f"https://bird.network.cz/download/bird-{version}.tar.gz",
-				final_name=f"bird-{version}.tar.gz",
-			)
-		],
-	)
-	ebuild.push()
+	else:
+		version = None
+
+	if version:
+		url=f"https://gitlab.nic.cz/labs/bird/-/archive/v{version}/bird-v{version}.tar.gz"
+		pkginfo['version'] = version
+		final_name = f'{pkginfo["name"]}-{version}.{".".join(url.split(".")[-2:])}'
+		ebuild = hub.pkgtools.ebuild.BreezyBuild(
+			**pkginfo,
+			artifacts=[hub.pkgtools.ebuild.Artifact(url=url, final_name=final_name)]
+		)
+		ebuild.push()
+# vim: ts=4 sw=4 noet
