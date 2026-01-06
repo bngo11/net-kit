@@ -29,6 +29,7 @@ IUSE+=" -plugin-ifdemo"
 CDEPEND="
 	>=dev-libs/glib-2.50:2
 	>=net-dns/c-ares-1.13
+	>=media-libs/speexdsp-1.2.0:0
 	dev-libs/libgcrypt:0
 	bcg729? ( media-libs/bcg729 )
 	brotli? ( app-arch/brotli:= )
@@ -101,11 +102,7 @@ REQUIRED_USE="
 
 RESTRICT="test"
 
-PATCHES=(
-	"${FILESDIR}/4.4.6-lto.patch"
-	"${FILESDIR}/4.6.2-gnutls-pkcs11.patch"
-
-)
+PATCHES=()
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
@@ -116,6 +113,15 @@ post_src_unpack() {
 	if [ ! -d "${S}" ] ; then
 		mv "${WORKDIR}"/wireshark-wireshark* "${S}" || die
 	fi
+}
+
+src_prepare() {
+	eapply "${FILESDIR}/4.4.6-lto.patch"
+	eapply "${FILESDIR}/4.6.2-gnutls-pkcs11.patch"
+
+	sed -i "4307d" CMakeLists.txt || die
+
+	cmake_src_prepare
 }
 
 src_configure() {
