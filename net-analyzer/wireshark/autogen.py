@@ -5,11 +5,11 @@ import json
 async def generate(hub, **pkginfo):
 	json_data = await hub.pkgtools.fetch.get_page(f"https://gitlab.com/api/v4/projects/7898047/repository/tags", is_json=True)
 	version = None
-	basever = "4.4"
+	basever = "4.6"
 
 	for item in json_data:
 		try:
-			version = item['name'].rsplit('-', 1)[-1]
+			version = item['name'].rsplit('-', 1)[-1].strip('v')
 			verlist = version.split(".")
 			list(map(int, verlist))
 			if len(verlist) > 1:
