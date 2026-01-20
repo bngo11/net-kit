@@ -118,6 +118,7 @@ post_src_unpack() {
 src_prepare() {
 	eapply "${FILESDIR}/4.4.6-lto.patch"
 	eapply "${FILESDIR}/4.6.2-gnutls-pkcs11.patch"
+	eapply "${FILESDIR}/4.6.3-pkgconfig.patch"
 
 	sed -i "4307d" CMakeLists.txt || die
 

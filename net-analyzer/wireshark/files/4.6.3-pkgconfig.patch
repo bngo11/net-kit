@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt	2026-01-20 12:09:45.600369628 -0600
++++ b/CMakeLists.txt	2026-01-20 12:09:54.511643260 -0600
+@@ -4316,7 +4316,6 @@
+ install(FILES "${CMAKE_BINARY_DIR}/resources/wireshark.pc"
+ 	DESTINATION ${TMP_DST_PATH}
+ 	COMPONENT "Development"
+-	EXCLUDE_FROM_ALL
+ )
+ 
+ cmake_path(SET TMP_DST_PATH NORMALIZE "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}")
