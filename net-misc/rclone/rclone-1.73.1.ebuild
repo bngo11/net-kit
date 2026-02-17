@@ -67,8 +67,8 @@ EGO_SUM=(
 	"github.com/!azure!a!d/microsoft-authentication-library-for-go v1.6.0/go.mod"
 	"github.com/!burnt!sushi/toml v0.3.1/go.mod"
 	"github.com/!burnt!sushi/xgb v0.0.0-20160522181843-27f122750802/go.mod"
-	"github.com/!filen!cloud!dienste/filen-sdk-go v0.0.35"
-	"github.com/!filen!cloud!dienste/filen-sdk-go v0.0.35/go.mod"
+	"github.com/!filen!cloud!dienste/filen-sdk-go v0.0.37"
+	"github.com/!filen!cloud!dienste/filen-sdk-go v0.0.37/go.mod"
 	"github.com/!files-com/files-sdk-go/v3 v3.2.264"
 	"github.com/!files-com/files-sdk-go/v3 v3.2.264/go.mod"
 	"github.com/!i!b!m/go-sdk-core/v5 v5.18.5"
@@ -286,8 +286,8 @@ EGO_SUM=(
 	"github.com/gin-contrib/sse v1.0.0/go.mod"
 	"github.com/gin-gonic/gin v1.10.0"
 	"github.com/gin-gonic/gin v1.10.0/go.mod"
-	"github.com/go-chi/chi/v5 v5.2.3"
-	"github.com/go-chi/chi/v5 v5.2.3/go.mod"
+	"github.com/go-chi/chi/v5 v5.2.5"
+	"github.com/go-chi/chi/v5 v5.2.5/go.mod"
 	"github.com/go-darwin/apfs v0.0.0-20211011131704-f84b94dbf348"
 	"github.com/go-darwin/apfs v0.0.0-20211011131704-f84b94dbf348/go.mod"
 	"github.com/go-git/go-billy/v5 v5.6.2"
@@ -429,8 +429,8 @@ EGO_SUM=(
 	"github.com/ianlancetaylor/demangle v0.0.0-20181102032728-5e5cf60278f6/go.mod"
 	"github.com/inconshreveable/mousetrap v1.1.0"
 	"github.com/inconshreveable/mousetrap v1.1.0/go.mod"
-	"github.com/internxt/rclone-adapter v0.0.0-20260130171252-c3c6ebb49276"
-	"github.com/internxt/rclone-adapter v0.0.0-20260130171252-c3c6ebb49276/go.mod"
+	"github.com/internxt/rclone-adapter v0.0.0-20260213125353-6f59c89fcb7c"
+	"github.com/internxt/rclone-adapter v0.0.0-20260213125353-6f59c89fcb7c/go.mod"
 	"github.com/jcmturner/aescts/v2 v2.0.0"
 	"github.com/jcmturner/aescts/v2 v2.0.0/go.mod"
 	"github.com/jcmturner/dnsutils/v2 v2.0.0"
@@ -1155,8 +1155,8 @@ EGO_SUM=(
 go-module_set_globals
 
 KEYWORDS="*"
-SRC_URI="https://github.com/rclone/rclone/tarball/c80c2b230f4a55ac92ecd41c6291b14e506faf71 -> rclone-1.73.0-c80c2b2.tar.gz
-https://direct.funtoo.org/c5/87/8c/c5878c9ce089bb66751e999f2e9c98f4539e645b5f8250c534d481456ef68e8c6794da0a291b3eed07ce75675e4baa5951dcf896e148b85e16af0dda176582ee -> rclone-1.73.0-funtoo-go-bundle-64d59547a87c9bccee065e0e1d80d001f3990e572120505abd4c3d0397534bb3f71984180707ea9adc2e1dfdd5eaa5407514f2859fab564ad44401659147fb9b.tar.gz"
+SRC_URI="https://github.com/rclone/rclone/tarball/3a618749c120c5379b939bb5d7cafe5e2d333ae7 -> rclone-1.73.1-3a61874.tar.gz
+https://direct.funtoo.org/31/f9/dd/31f9ddb66c936f894db7c964a659ccf4406ae1527345d6c156e32d77e0b92488b956ff2bb5589fb03f3b4e75236a961f0f9996a355fa5359c2d6029ba618b31c -> rclone-1.73.1-funtoo-go-bundle-ad8016ccb95fee577720727c130ae8f4e28228ba689feeedf32577d4ed0ca5bf3b2c505f8810ac32ba38fba75c27554ab6b13911a67cbe3e83abeb12b93976d3.tar.gz"
 
 DESCRIPTION="A program to sync files to and from various cloud storage providers"
 HOMEPAGE="https://rclone.org/"
