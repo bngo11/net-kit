@@ -6,7 +6,7 @@ inherit cmake xdg
 
 DESCRIPTION="Desktop Syncing Client for Nextcloud"
 HOMEPAGE="https://github.com/nextcloud/desktop"
-SRC_URI="https://api.github.com/repos/nextcloud/desktop/tarball/v4.0.8 -> nextcloud-desktop-4.0.8.tar.gz"
+SRC_URI="https://api.github.com/repos/nextcloud/desktop/tarball/v33.0.0 -> nextcloud-desktop-33.0.0.tar.gz"
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
