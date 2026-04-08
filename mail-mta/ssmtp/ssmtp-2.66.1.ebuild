@@ -10,7 +10,7 @@ inherit eutils autotools user
 
 DESCRIPTION="Extremely simple MTA to get mail off the system to a Mailhub"
 HOMEPAGE="ftp://ftp.debian.org/debian/pool/main/s/ssmtp/"
-SRC_URI="http://deb.debian.org/debian/pool/main/s/ssmtp/ssmtp_2.64.orig.tar.bz2 -> ssmtp_2.64.orig.tar.bz2
+SRC_URI="http://deb.debian.org/debian/pool/main/s/ssmtp/ssmtp_2.66.orig.tar.gz -> ssmtp_2.66.orig.tar.gz
 	https://dev.gentoo.org/~pinkbyte/distfiles/patches/${P}-patches-${PATCHSET}.tar.xz"
 
 LICENSE="GPL-2"
