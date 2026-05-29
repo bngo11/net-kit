@@ -12,7 +12,6 @@ async def generate(hub, **pkginfo):
 
 	artifacts = {
 		"amd64": hub.pkgtools.ebuild.Artifact(url=url),
-		"x86": hub.pkgtools.ebuild.Artifact(url=url.replace("amd64", "i386")),
 	}
 
 	ebuild = hub.pkgtools.ebuild.BreezyBuild(**pkginfo, version=version, artifacts=artifacts)
