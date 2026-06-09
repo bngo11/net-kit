@@ -604,8 +604,8 @@ EGO_SUM=(
 	"github.com/rclone/!proton-!a!p!i-!bridge v1.0.3/go.mod"
 	"github.com/rclone/go-proton-api v1.0.2"
 	"github.com/rclone/go-proton-api v1.0.2/go.mod"
-	"github.com/rclone/gofakes3 v0.0.4"
-	"github.com/rclone/gofakes3 v0.0.4/go.mod"
+	"github.com/rclone/gofakes3 v0.0.6"
+	"github.com/rclone/gofakes3 v0.0.6/go.mod"
 	"github.com/relvacode/iso8601 v1.7.0"
 	"github.com/relvacode/iso8601 v1.7.0/go.mod"
 	"github.com/rfjakob/eme v1.2.0"
@@ -1164,8 +1164,8 @@ EGO_SUM=(
 go-module_set_globals
 
 KEYWORDS="*"
-SRC_URI="https://github.com/rclone/rclone/tarball/8371deb8d342cd50a207fb8c0c2a623e9ec5624c -> rclone-1.74.2-8371deb.tar.gz
-https://direct.funtoo.org/e5/fd/7f/e5fd7f99822d4e658b0fbd8a5f3046918b3bca12ff1ff5ebdf9144bae053425daf59d223dc4c33488e3a4e8780d4366cd11e993ddda403830eae6dc04522df30 -> rclone-1.74.2-funtoo-go-bundle-46e8838f731e03a5b9b2401b7eed2d1a747a5985c1b03768b7ca0957c122eb56d859d0588ea33b83b06048440ca14762166fe237a3fb135d22d641eae153decb.tar.gz"
+SRC_URI="https://github.com/rclone/rclone/tarball/ed3b9beebee17a2bb9b226ffe62d792a1cdec61d -> rclone-1.74.3-ed3b9be.tar.gz
+https://direct.funtoo.org/f1/92/70/f1927062d5b78960f48b5778d38ae14676598ff20057122b889e15558f5e508ed6fcbb92657e007402f31ed445f04d8977056beaf0bd10e74366804b952a4286 -> rclone-1.74.3-funtoo-go-bundle-4cf824f8b6801f5534d6c7273185d991d34fe9c99223e5c662380a4154981a3fb4d594e72ad6815f85edd7bb9b92957699cc7b4cbb5cc922672b6280409c72e7.tar.gz"
 
 DESCRIPTION="A program to sync files to and from various cloud storage providers"
 HOMEPAGE="https://rclone.org/"

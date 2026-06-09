@@ -287,8 +287,8 @@ EGO_SUM=(
 	"golang.org/x/net v0.0.0-20210428140749-89ef3d95e781/go.mod"
 	"golang.org/x/net v0.0.0-20220225172249-27dd8689420f/go.mod"
 	"golang.org/x/net v0.0.0-20220607020251-c690dde0001d/go.mod"
-	"golang.org/x/net v0.54.0"
-	"golang.org/x/net v0.54.0/go.mod"
+	"golang.org/x/net v0.55.0"
+	"golang.org/x/net v0.55.0/go.mod"
 	"golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f/go.mod"
 	"golang.org/x/sync v0.0.0-20190423024810-112230192c58/go.mod"
 	"golang.org/x/sync v0.0.0-20201020160332-67f06af15bc9/go.mod"
@@ -316,8 +316,8 @@ EGO_SUM=(
 	"golang.org/x/sys v0.0.0-20220908164124-27713097b956/go.mod"
 	"golang.org/x/sys v0.1.0/go.mod"
 	"golang.org/x/sys v0.6.0/go.mod"
-	"golang.org/x/sys v0.44.0"
-	"golang.org/x/sys v0.44.0/go.mod"
+	"golang.org/x/sys v0.45.0"
+	"golang.org/x/sys v0.45.0/go.mod"
 	"golang.org/x/telemetry v0.0.0-20260508192327-42602be52be6"
 	"golang.org/x/telemetry v0.0.0-20260508192327-42602be52be6/go.mod"
 	"golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod"
@@ -401,14 +401,14 @@ go-module_set_globals
 
 DESCRIPTION="Open Source Continuous File Synchronization"
 HOMEPAGE="https://github.com/syncthing/syncthing"
-SRC_URI="https://github.com/syncthing/syncthing/tarball/f1f242e8ffa869f41342bbbe97e338524f3a070a -> syncthing-2.1.0-f1f242e.tar.gz
-https://direct.funtoo.org/d4/ec/c5/d4ecc5dc53302e92e5461e61d542ad85f04a5543cf370bdad271ca62953ae7d5a79c5cf72cc16e3a9658bea79946a71bae3aa2fbfce11605af2e4a4679efd69f -> syncthing-2.1.0-funtoo-go-bundle-20d4d983ab96da7af94d41ea5cb197d16f147c70a87d7865f64111f945b3e6da9f3fee8d69bd24cac12cbd3c50cef6bc3a483d02ea3b3c43ef9d2b6b8ec1a431.tar.gz"
+SRC_URI="https://github.com/syncthing/syncthing/tarball/e105e5b6aa9f4e625e379b4a449c02db9c78dde3 -> syncthing-2.1.1-e105e5b.tar.gz
+https://direct.funtoo.org/c0/fd/9b/c0fd9b12696830ed3026df2c08fcc7572797c98bbbee9ae5e1c5ba72e45b6db1807e86aa8cf5a5d1f3160fa0e376105f5d73ff6180a7eea5017620f70737e9e2 -> syncthing-2.1.1-funtoo-go-bundle-975bdb1c2999e11c39e0f2841954dc50eb068e4bb01b32c9332b52223f6fa7b32716ff37f89cee8df60b8f6a8522ff32cbbafc3a6feeac67af35eb6e5b33972c.tar.gz"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0 Unlicense"
 SLOT="0"
 KEYWORDS="*"
 IUSE="tools"
-S="${WORKDIR}/syncthing-syncthing-f1f242e"
+S="${WORKDIR}/syncthing-syncthing-e105e5b"
 
 DEPEND=">=dev-lang/go-1.17"
 
