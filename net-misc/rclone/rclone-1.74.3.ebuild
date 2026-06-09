@@ -1165,7 +1165,7 @@ go-module_set_globals
 
 KEYWORDS="*"
 SRC_URI="https://github.com/rclone/rclone/tarball/ed3b9beebee17a2bb9b226ffe62d792a1cdec61d -> rclone-1.74.3-ed3b9be.tar.gz
-https://direct.funtoo.org/f1/92/70/f1927062d5b78960f48b5778d38ae14676598ff20057122b889e15558f5e508ed6fcbb92657e007402f31ed445f04d8977056beaf0bd10e74366804b952a4286 -> rclone-1.74.3-funtoo-go-bundle-4cf824f8b6801f5534d6c7273185d991d34fe9c99223e5c662380a4154981a3fb4d594e72ad6815f85edd7bb9b92957699cc7b4cbb5cc922672b6280409c72e7.tar.gz"
+https://direct.funtoo.org/d1/c9/7d/d1c97decd4f6fc2c051f65698e907fda6ea492419194cf3cdcf9f0b7708fb9351cc73b7c6a9e7f50508a16cf39998fb61acc6ca632eab38438433327a6df4fbf -> rclone-1.74.3-funtoo-go-bundle-4cf824f8b6801f5534d6c7273185d991d34fe9c99223e5c662380a4154981a3fb4d594e72ad6815f85edd7bb9b92957699cc7b4cbb5cc922672b6280409c72e7.tar.gz"
 
 DESCRIPTION="A program to sync files to and from various cloud storage providers"
 HOMEPAGE="https://rclone.org/"

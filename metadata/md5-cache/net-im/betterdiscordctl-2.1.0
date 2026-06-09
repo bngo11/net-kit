@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=A manager for BetterDiscord on Linux
+EAPI=7
+HOMEPAGE=https://github.com/bb010g/betterdiscordctl
+KEYWORDS=*
+LICENSE=MIT
+SLOT=0
+SRC_URI=https://github.com/bb010g/betterdiscordctl/archive/v2.1.0.tar.gz -> betterdiscordctl-2.1.0.tar.gz
+_md5_=bade3843eb7b83aba235b3f673b8b83a

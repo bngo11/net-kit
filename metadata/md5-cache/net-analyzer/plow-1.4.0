@@ -1,0 +1,12 @@
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst prepare unpack
+DESCRIPTION=HTTP(S) benchmarking tool, written in Golang
+EAPI=7
+HOMEPAGE=https://github.com/six-ddc/plow
+KEYWORDS=*
+LICENSE=MIT
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/six-ddc/plow/tarball/3d2ca2a747b505aff3b88dce645730fc1e35e493 -> plow-1.4.0-3d2ca2a.tar.gz https://direct.funtoo.org/1d/9d/96/1d9d9619166ee0fdac98b5dab1fe3e087a95b4d0c7c8400f042e48e161da367ca8bf8f3d2d9def5b96ee50b01d0ea925ab5802cb5bc88d5920f5041fdac28d22 -> plow-1.4.0-funtoo-go-bundle-ade6bd56ce8b1865c202545223f096066d88e72977e9821700e6f637f21843a838ab4e3b2281ebef5eac2d9289671406c21a05837ca8e8ba77b478738be81a8d.tar.gz
+_eclasses_=go-module	cb10a443c46556a15ed035d7a99128e8	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=791554daf44be6aab7e11bee27ac2dba

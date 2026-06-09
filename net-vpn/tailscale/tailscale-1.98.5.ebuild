@@ -9,7 +9,7 @@ VERSION_LONG="1.98.5-t8f8fe6a2e"
 DESCRIPTION="Tailscale vpn client"
 HOMEPAGE="https://tailscale.com"
 SRC_URI="https://github.com/tailscale/tailscale/tarball/8f8fe6a2e167459ed0f62616287b61b0b0a54eb5 -> tailscale-1.98.5-8f8fe6a.tar.gz
-https://direct.funtoo.org/ce/5d/f1/ce5df1b42ba9d9ceed3fbd4912f523d6a76428c32d56fad310d96e2fa8024d5c873b49550ed3118de939fde74044aaddf366f593ab35f54e4739ef40e097020f -> tailscale-1.98.5-funtoo-go-bundle-5e587834714881c8e3220dac283319822bfb61b24ee7826c6cba94c83965ff3a3cd55f206a3b57a4d29bd7b841d2cda6c8542bef0bd6cec2544dda016cd2f183.tar.gz"
+https://direct.funtoo.org/ce/8c/51/ce8c513d2a3c6e54922ad9170c7bb72e9464faebea6a55814903cbc944782a4619a9e18e34e35f0d73c1e55ba6a865f84a57430d8a60af36670df89b6b7cbd11 -> tailscale-1.98.5-funtoo-go-bundle-5e587834714881c8e3220dac283319822bfb61b24ee7826c6cba94c83965ff3a3cd55f206a3b57a4d29bd7b841d2cda6c8542bef0bd6cec2544dda016cd2f183.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
