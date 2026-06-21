@@ -5,7 +5,7 @@ inherit autotools readme.gentoo-r1 systemd
 
 DESCRIPTION="An IMAP daemon designed specifically for maildirs"
 HOMEPAGE="https://www.courier-mta.org/imap/"
-SRC_URI="https://sourceforge.net/projects/courier/files/imap/5.3.2/courier-imap-5.3.2.tar.bz2 -> courier-imap-5.3.2.tar.bz2"
+SRC_URI="https://sourceforge.net/projects/courier/files/imap/6.0.0/courier-imap-6.0.0.tar.bz2 -> courier-imap-6.0.0.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
