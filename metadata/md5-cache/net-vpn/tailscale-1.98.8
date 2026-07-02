@@ -1,0 +1,13 @@
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst prepare unpack
+DESCRIPTION=Tailscale vpn client
+EAPI=7
+HOMEPAGE=https://tailscale.com
+KEYWORDS=*
+LICENSE=MIT
+RDEPEND=net-firewall/iptables virtual/tmpfiles
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/tailscale/tailscale/tarball/1241b225bc798707d02db3570992625d3a16594f -> tailscale-1.98.8-1241b22.tar.gz https://direct.funtoo.org/08/68/d4/0868d42451741de57b0110d016f611c208576c47ea2a5fb4a229f2c8886de3dd45256b2b4d46a8c5784a4385024e6ae7eadf0d1480975324092b77fca6b8a9f8 -> tailscale-1.98.8-funtoo-go-bundle-4d3ea645ddd593214c2fd9bd5f18143f228c7f036bb31fb7a643fc0002888426acc5771ab11279cd1830be385cb55bffc1234fff0d5a9c7805356f1fe0c1d2f7.tar.gz
+_eclasses_=go-module	cb10a443c46556a15ed035d7a99128e8	tmpfiles	6f14f7c8fb6f63585daa89581247c82c	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=a1ae965da9b9bd54979a2c4f0f715fcf

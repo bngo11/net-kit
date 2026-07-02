@@ -9,7 +9,8 @@ async def generate(hub, **pkginfo):
 	pkginfo["description"] = "A free, open-source tool for programming your radio."
 	pkginfo["python_compat"] = "python3+" # As of v.20230319 needs to by <=3.10.
 
-	dnl_page = await hub.pkgtools.fetch.get_page("https://trac.chirp.danplanet.com/download?stream=next")
+	# dnl_page = await hub.pkgtools.fetch.get_page("https://trac.chirp.danplanet.com/download?stream=next")
+	dnl_page = await hub.pkgtools.fetch.get_page("https://archive.chirpmyradio.com/chirp_next")
 	hub.pkgtools.model.log.debug(f"Download page URL: {dnl_page}")
 
 	for a in BeautifulSoup(dnl_page, features="html.parser").find_all("a", href=True):

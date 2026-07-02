@@ -4,10 +4,10 @@ EAPI="7"
 
 inherit linux-info prefix
 
-DESCRIPTION="A high-level tool for configuring Netfilter"
-HOMEPAGE="https://shorewall.org/"
+DESCRIPTION="{{desc}}"
+HOMEPAGE="{{homepage}}"
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="{{slot|default('0')}}"
 IUSE="doc +init +ipv4 ipv6 lite4 lite6 selinux"
 
 MY_PV=${PV/_rc/-RC}
@@ -68,14 +68,7 @@ else
 	KEYWORDS="~alpha amd64 ~hppa ppc ppc64 sparc x86"
 fi
 
-SRC_URI="https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/shorewall-core-5.2.8.tar.bz2 -> shorewall-core-5.2.8.tar.bz2
-ipv4? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/shorewall-5.2.8.tar.bz2 -> shorewall-5.2.8.tar.bz2 )
-ipv6? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/shorewall6-5.2.8.tar.bz2 -> shorewall6-5.2.8.tar.bz2 )
-lite4? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/shorewall-lite-5.2.8.tar.bz2 -> shorewall-lite-5.2.8.tar.bz2 )
-lite6? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/shorewall6-lite-5.2.8.tar.bz2 -> shorewall6-lite-5.2.8.tar.bz2 )
-init? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/shorewall-init-5.2.8.tar.bz2 -> shorewall-init-5.2.8.tar.bz2 )
-doc? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/shorewall-docs-html-5.2.8.tar.bz2 -> shorewall-docs-html-5.2.8.tar.bz2 )
-"
+SRC_URI="{{src_uri}}"
 
 # - Shorewall6 requires Shorewall
 # - Installing Shorewall-init or just the documentation doesn't make any sense,
@@ -166,7 +159,7 @@ src_prepare() {
 	eend 0
 
 	pushd "${S}"/${MY_PN_CORE} &>/dev/null || die
-	eapply "${FILESDIR}"/5.2.8-core-no-gzipped-manpages.patch
+	eapply "${FILESDIR}"/{{patches[1]}}
 	popd &>/dev/null || die
 
 	# shorewall
@@ -180,7 +173,7 @@ src_prepare() {
 		eend 0
 
 		pushd "${S}"/${MY_PN_IPV4} &>/dev/null || die
-		eapply "${FILESDIR}"/5.2.8-no-gzipped-manpages.patch
+		eapply "${FILESDIR}"/{{patches[0]}}
 		popd &>/dev/null || die
 	fi
 
@@ -195,7 +188,7 @@ src_prepare() {
 		eend 0
 
 		pushd "${S}"/${MY_PN_IPV6} &>/dev/null || die
-		eapply "${FILESDIR}"/5.2.8-no-gzipped-manpages.patch
+		eapply "${FILESDIR}"/{{patches[0]}}
 		popd &>/dev/null || die
 	fi
 
@@ -210,7 +203,7 @@ src_prepare() {
 		eend 0
 
 		pushd "${S}"/${MY_PN_LITE4} &>/dev/null || die
-		eapply "${FILESDIR}"/5.2.8-lite-no-gzipped-manpages.patch
+		eapply "${FILESDIR}"/{{patches[2]}}
 		popd &>/dev/null || die
 	fi
 
@@ -225,7 +218,7 @@ src_prepare() {
 		eend 0
 
 		pushd "${S}"/${MY_PN_LITE6} &>/dev/null || die
-		eapply "${FILESDIR}"/5.2.8-lite-no-gzipped-manpages.patch
+		eapply "${FILESDIR}"/{{patches[2]}}
 		popd &>/dev/null || die
 	fi
 
@@ -243,7 +236,7 @@ src_prepare() {
 		eprefixify "${S}"/${MY_PN_INIT}/init.funtoo.sh
 
 		pushd "${S}"/${MY_PN_INIT} &>/dev/null || die
-		eapply -p2 "${FILESDIR}"/5.2.8-init-01_remove-ipset-functionality-r2.patch
+		eapply -p2 "${FILESDIR}"/{{patches[3]}}
 		popd &>/dev/null || die
 	fi
 
