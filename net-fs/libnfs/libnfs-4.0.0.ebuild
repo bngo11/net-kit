@@ -24,6 +24,10 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.0.0-use-const-qualifier-from-pointer-target-type.patch"
+)
+
 src_prepare() {
 	default
 	eautoreconf
