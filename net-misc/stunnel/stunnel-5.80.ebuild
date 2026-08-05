@@ -7,7 +7,7 @@ inherit autotools python-any-r1 ssl-cert tmpfiles user
 
 DESCRIPTION="TLS/SSL - Port Wrapper"
 HOMEPAGE="http://www.stunnel.org/index.html"
-SRC_URI="https://www.stunnel.org/archive/5.x/stunnel-5.79.tar.gz -> stunnel-5.79.tar.gz
+SRC_URI="https://www.stunnel.org/archive/5.x/stunnel-5.80.tar.gz -> stunnel-5.80.tar.gz
 "
 LICENSE="GPL-2"
 
