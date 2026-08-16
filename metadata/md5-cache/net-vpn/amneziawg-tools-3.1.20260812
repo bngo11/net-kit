@@ -1,0 +1,11 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install
+DESCRIPTION=Tools for configuring Amnezia-WG
+EAPI=7
+HOMEPAGE=https://github.com/amnezia-vpn/amneziawg-tools
+KEYWORDS=*
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://github.com/amnezia-vpn/amneziawg-tools/tarball/ee0f0a9aa34ff0a0da4b3433b9512781cfe02843 -> amneziawg-tools-3.1.20260812-ee0f0a9.tar.gz
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=31db7687b3f5eb85b8585bb4496f5fe1
