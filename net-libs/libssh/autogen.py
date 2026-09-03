@@ -2,25 +2,34 @@
 
 from bs4 import BeautifulSoup
 
-
-def get_release(releases_data):
-	releases = list(filter(lambda x: x["href"].endswith(".tar.xz") and "release" not in x["href"], releases_data))
-	return None if not releases else sorted(releases, key=lambda x: x["href"]).pop()
-
-
 async def generate(hub, **pkginfo):
-	repo_data = await hub.pkgtools.fetch.get_page("https://git.libssh.org/projects/libssh.git/refs/tags")
-	repo_soup = BeautifulSoup(repo_data, "html.parser")
+	html_data = await hub.pkgtools.fetch.get_page("https://git.libssh.org/projects/libssh.git/refs/tags")
+	soup = BeautifulSoup(html_data, "html.parser")
+	links = soup.find_all("a")
+	version = None
 
-	release = get_release(repo_soup.find_all("a", href=True))
-	url = "https://git.libssh.org" + release["href"]
-	version = release["href"].split("-")[-1].rstrip(".tar.xz")
+	for link in links:
+		href = link.get("href")
+		if href and href.endswith(".xz"):
+			parts, final_name = href.rsplit("/", 1)
+			version = final_name.split("-")[-1].rsplit(".", 2)[0]
 
-	ebuild = hub.pkgtools.ebuild.BreezyBuild(
-			**pkginfo, version=version, artifacts=[hub.pkgtools.ebuild.Artifact(url=url)],
-			revision={"0.9.6":"1"}
-	)
-	ebuild.push()
+			try:
+				list(map(int, version.split(".")))
+				break
+
+			except ValueError:
+				continue
+
+	if version:
+		url = f"https://git.libssh.org/projects/libssh.git/snapshot/{final_name}"
+		ebuild = hub.pkgtools.ebuild.BreezyBuild(
+			**pkginfo,
+			version=version,
+			artifacts=[hub.pkgtools.ebuild.Artifact(url=url, final_name=final_name)],
+		)
+
+		ebuild.push()
 
 
 # vim: ts=4 sw=4 noet
