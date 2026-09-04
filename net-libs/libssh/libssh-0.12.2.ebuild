@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-util/cmocka-0.3.1 )
 "
 
-DOCS=( AUTHORS README ChangeLog )
+DOCS=( AUTHORS README CHANGELOG )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.8.0-tests.patch"
