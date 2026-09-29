@@ -8,7 +8,7 @@ DESCRIPTION="BitTorrent client in C++ and Qt"
 HOMEPAGE="https://www.qbittorrent.org
 	  https://github.com/qbittorrent"
 
-SRC_URI="https://github.com/qbittorrent/qBittorrent/tarball/0b63c3d17373f6132ea211c9dcd4241284ccdfaf -> qBittorrent-5.2.3-0b63c3d.tar.gz"
+SRC_URI="https://github.com/qbittorrent/qBittorrent/tarball/a1e4649cb8ae581925acc161dbab5cbc6584c542 -> qBittorrent-5.2.4-a1e4649.tar.gz"
 KEYWORDS="*"
 
 LICENSE="GPL-2"
