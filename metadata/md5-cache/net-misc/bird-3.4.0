@@ -8,5 +8,5 @@ KEYWORDS=*
 LICENSE=GPL-2
 RDEPEND=client? ( sys-libs/ncurses ) client? ( sys-libs/readline )
 SLOT=0
-SRC_URI=https://gitlab.nic.cz/labs/bird/-/archive/v3.3.3/bird-v3.3.3.tar.gz -> bird-3.3.3.tar.gz
-_md5_=158a8468ce74a79e8e66f236a99abf19
+SRC_URI=https://gitlab.nic.cz/labs/bird/-/archive/v3.4.0/bird-v3.4.0.tar.gz -> bird-3.4.0.tar.gz
+_md5_=44c01a5c0b89e455e3887fefcca55607

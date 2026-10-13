@@ -4,7 +4,7 @@ EAPI=7
 
 DESCRIPTION="A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6"
 HOMEPAGE="http://bird.network.cz"
-SRC_URI="https://gitlab.nic.cz/labs/bird/-/archive/v3.3.3/bird-v3.3.3.tar.gz -> bird-3.3.3.tar.gz"
+SRC_URI="https://gitlab.nic.cz/labs/bird/-/archive/v3.4.0/bird-v3.4.0.tar.gz -> bird-3.4.0.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
