@@ -1,0 +1,12 @@
+BDEPEND=>=dev-lang/go-1.21 >=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst prepare unpack
+DESCRIPTION=CoreDNS is a DNS server that chains plugins
+EAPI=7
+HOMEPAGE=https://coredns.io/ https://github.com/coredns/coredns
+KEYWORDS=*
+LICENSE=Apache-2.0
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/coredns/coredns/tarball/a6fde3fe339c6ec848447e11cc9796be8c97b4e0 -> coredns-1.15.0-a6fde3f.tar.gz https://direct.funtoo.org/6a/19/95/6a1995865b84aa12d64b563f68a223a9ec9459102de61ef5572a8d67d533375e34a735aaf18a3c747818c75de45900fd3844c14ebd1f4939d1a18120644b621b -> coredns-1.15.0-funtoo-go-bundle-79af8927890f45a7edea503ecc71871f92423aa27db3f650ec89ad1a6cd108f29c910cf0a1254b9d43d32db3eb59b83955e426a58defd629781a14e67861f81c.tar.gz
+_eclasses_=go-module	cb10a443c46556a15ed035d7a99128e8	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=ca9aa8dae192ada62e61388652eacc27
