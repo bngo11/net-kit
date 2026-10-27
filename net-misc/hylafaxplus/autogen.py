@@ -1,30 +1,35 @@
 #!/usr/bin/env python3
 
 from bs4 import BeautifulSoup
-from packaging.version import Version
-import re
-import os.path
 
 async def generate(hub, **pkginfo):
-    name = pkginfo['name'].replace('plus', '')
+	html_data = await hub.pkgtools.fetch.get_page("https://hylafax.sourceforge.io/download.php")
+	soup = BeautifulSoup(html_data, "html.parser")
+	links = soup.find_all("a")
+	version = None
 
-    version_url = "https://hylafax.sourceforge.io/download.php"
-    download_url = f"https://download.sourceforge.net/{name}/"
+	for link in links:
+		href = link.get_text()
+		if href and "release" in href:
+			version = href.split(" ")[0]
+
+			try:
+				list(map(int, version.split(".")))
+				break
+
+			except ValueError:
+				continue
+
+	if version:
+		final_name = f"hylafax-{version}.tar.gz"
+		url = f"https://sourceforge.net/projects/hylafax/files/hylafax/{final_name}/download"
+		ebuild = hub.pkgtools.ebuild.BreezyBuild(
+			**pkginfo,
+			version=version,
+			artifacts=[hub.pkgtools.ebuild.Artifact(url=url, final_name=final_name)],
+		)
+
+		ebuild.push()
 
 
-    html = await hub.pkgtools.fetch.get_page(version_url)
-    soup = BeautifulSoup(html, features="html.parser")
-
-    latest = max(
-        [(a.text.split('-')[1].split('.tar')[0], a.text) for a in soup.findAll("a") if re.search(f"{name}-([0-9.]+).tar.gz", a.text)],
-        key=lambda x: Version(x[0])
-    )
-
-    artifact = hub.pkgtools.ebuild.Artifact(url=f"{download_url}{latest[1]}")
-    pkginfo['version'] = latest[0]
-
-    ebuild = hub.pkgtools.ebuild.BreezyBuild(
-        **pkginfo,
-        artifacts=[artifact]
-    )
-    ebuild.push()
+# vim: ts=4 sw=4 noet
