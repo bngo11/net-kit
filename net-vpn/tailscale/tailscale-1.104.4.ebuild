@@ -5,7 +5,7 @@ EAPI=7
 inherit go-module tmpfiles
 
 DESCRIPTION="Tailscale VPN client"
-SRC_URI="https://github.com/tailscale/tailscale/archive/v1.104.2.tar.gz -> tailscale-1.104.2.tar.gz"
+SRC_URI="https://github.com/tailscale/tailscale/archive/v1.104.4.tar.gz -> tailscale-1.104.4.tar.gz"
 HOMEPAGE="https://www.tailscale.com/"
 KEYWORDS="*"
 SLOT="0"
