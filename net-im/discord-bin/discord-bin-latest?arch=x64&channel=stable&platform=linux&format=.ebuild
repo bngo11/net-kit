@@ -7,7 +7,7 @@ inherit desktop eutils unpacker pax-utils xdg
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
-SRC_URI="https://stable.dl2.discordapp.net/apps/linux/1.0.168/discord-1.0.168.deb -> discord-1.0.168.deb"
+SRC_URI="https://discord.com/api/downloads/distributions/app/installers/latest?arch=x64&channel=stable&platform=linux&format=deb -> latest?arch=x64&channel=stable&platform=linux&format=deb"
 RESTRICT="bindist"
 LICENSE="all-rights-reserved"
 SLOT="0"
