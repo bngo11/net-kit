@@ -9,6 +9,6 @@ LICENSE=Apache-2.0 BSD BSD-2 ISC MIT
 RDEPEND=>=sys-fs/fuse-3
 RESTRICT=strip
 SLOT=0
-SRC_URI=https://github.com/rclone/rclone/tarball/b0dd53938615bb610c64f610eb2b17be16752f77 -> rclone-1.75.2-b0dd539.tar.gz https://direct.funtoo.org/f4/27/9f/f4279f52bbc6b924752aa2d4bc6ac472e6d3306af781364da0dded9b399ba3b1e64f38950c7e98b572483e8c1bc0327ae66c92db1893a48af5e1bbafa0554fc6 -> rclone-1.75.2-funtoo-go-bundle-abf4c0dfe3aa2ac2557ede98af9169b5eaade05d57c78a1fa43fd5dbfe57b01a96a28a18ef6b2cccd112ccdd890255387dda855b8b8d87547255acc71044bf71.tar.gz
+SRC_URI=https://github.com/rclone/rclone/tarball/7172b5fb648701ec1d6f8c257954e16d35750714 -> rclone-1.76.0-7172b5f.tar.gz https://direct.funtoo.org/5c/eb/57/5ceb578aab7da0b20972f21a300324774c36bd8348333e6dccb1e019cb205d58a54b3cd0677c0a9bac2a3d1a2b5e82196405f064114f072cc725932eecd598b4 -> rclone-1.76.0-funtoo-go-bundle-94a61417951d9422dda5317c61ce3353de993809c5959faf66fe23c0baeece3edde13ed801717af04e66f70e2bbae6933aaad353dc08517bb662780397a1e6a7.tar.gz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	go-module	cb10a443c46556a15ed035d7a99128e8	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=0a19584e47004024802040011a0691ad
+_md5_=9f85edb4e395456549ccb94603f09bc4
